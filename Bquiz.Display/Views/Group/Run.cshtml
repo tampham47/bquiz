@@ -18,7 +18,7 @@
 @Html.Action("Navigation", new { quizId = Model.QuizId, testId = Model.TestId })
 
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-sm-9">
         <div>  
             @*<p>@Model.Group.Name</p>*@
 
@@ -46,18 +46,18 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-sm-3">
         @Html.Partial("AnswerBoard", Model.AnswerList)
         @{
             var nav = Bquiz.Display.Helpers.ps_PageHelpers.GetNav(Model.Group.QuestionGroupId);
         }
         <div class="btn-group btn-block">
             <a href="/group/run?groupId=@nav.PreGroup&testId=@Model.TestId"
-                class="btn btn-default col-md-6 btn-sm"> 
+                class="btn btn-default col-sm-6 btn-sm"> 
                 <span class="glyphicon glyphicon-chevron-left"></span> prev</a>
 
             <a href="/group/run?groupId=@nav.NextGroup&testId=@Model.TestId"
-                class="btn btn-default col-md-6 btn-sm"> 
+                class="btn btn-default col-sm-6 btn-sm"> 
                 next <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
