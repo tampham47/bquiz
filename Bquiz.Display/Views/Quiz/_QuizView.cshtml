@@ -1,0 +1,50 @@
+﻿@using Bquiz.Display.Helpers;
+@model BquizDB.Entities.bq_Quiz
+
+<div class="col-md-4" style="margin-bottom:8px">
+
+    <div class="media">
+        <a href="/Test/PreStart?quizId=@Model.QuizId" class="pull-left">
+            <img src="../../Bquiz_Data/Images/CompanyIcon/@Model.CompanyIcon" class="img-rounded" width="75" height="75"/></a>
+
+        <div class="media-body">
+            <b><a href="/Test/PreStart?quizId=@Model.QuizId">@Model.Name</a></b><br />
+            <span>@Model.bq_User.UserName</span> 
+            @if(ps_Membership.IsAuthenticated() &&
+                Model.UserId == ps_Membership.GetUser().UserId)
+            {
+                <span>-</span>
+                <a href="/quiz/editting?quizId=@Model.QuizId">(Edit)</a>
+                <a href="/quiz/delete?quizId=@Model.QuizId">(delete)</a>
+            }
+            <br />
+            <span>@Model.bq_Test.Count người đã tham gia test</span><br />
+            <span>Max score : @Model.MaxScore</span>
+        </div>
+    </div>
+
+    @*<table>
+        <tr>
+            <td style="width:75px">
+                <a href="/Test/PreStart?quizId=@Model.QuizId">
+                    <img src="../../Bquiz_Data/Images/CompanyIcon/@Model.CompanyIcon" 
+                        width="75" height="75" class="img-rounded"/></a>
+            </td>
+            <td>
+                <b><a href="/Test/PreStart?quizId=@Model.QuizId">@Model.Name</a></b><br />
+                <span>@Model.bq_User.UserName</span> 
+                @if(ps_Membership.IsAuthenticated() &&
+                    Model.UserId == ps_Membership.GetUser().UserId)
+                {
+                    <span>-</span>
+                    <a href="/quiz/editting?quizId=@Model.QuizId">(Edit)</a>
+                    <a href="/quiz/delete?quizId=@Model.QuizId">(delete)</a>
+                }
+                <br />
+                <span>@Model.bq_Test.Count người đã tham gia test</span><br />
+                <span>Max score : @Model.MaxScore</span>
+            </td>
+        </tr>
+    </table>*@
+</div>
+

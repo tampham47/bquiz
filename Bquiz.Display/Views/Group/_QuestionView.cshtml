@@ -1,0 +1,49 @@
+﻿@model BquizDB.Entities.bq_Question
+
+<div class="Element">
+    <div class="ImportantElement">Question @Model.Order</div>
+
+    @if (Model.Paragraph != null)
+    {
+        <div>
+            @Model.Paragraph
+        </div>
+    }
+    @if (Model.MediaPath != null)
+    {
+        <audio controls="controls">
+            <source src="\Bquiz_Data\Audio\@Model.MediaPath" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    }
+    @if (Model.ImagePath != null)
+    {
+        <img src="\Bquiz_Data\Images\@Model.ImagePath" width="90%" />
+    }
+
+    <div>
+        <table>
+            <tr>
+                <td style="width:20px; vertical-align:top">
+                    <span class="label label-info">A</span></td>
+                <td>@Model.OptionA</td>
+            </tr>
+            <tr>
+                <td style="width:20px; vertical-align:top">
+                    <span class="label label-info">B</span></td>
+                <td>@Model.OptionB</td>
+            </tr>
+            <tr>
+                <td style="width:20px; vertical-align:top">
+                    <span class="label label-info">C</span></td>
+                <td>@Model.OptionC</td>
+            </tr>
+            <tr>
+                <td style="width:20px; vertical-align:top">
+                    <span class="label label-info">D</span></td>
+                <td>@Model.OptionD</td>
+            </tr>
+        </table>
+    </div>
+</div>
+

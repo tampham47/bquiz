@@ -1,0 +1,48 @@
+﻿@model BquizDB.Entities.bq_User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_zing_pure_layout.cshtml";
+}
+
+<h2>Your Infomation</h2>
+
+<table>
+    <tr>
+        <td style="width:130px">
+            <img src="../../Bquiz_Data/Avatars/@Model.Avatar" width="110"/>
+        </td>
+        <td>
+            <div>
+                <table>
+                    <tr>
+                        <td style="width:75px">Full Name</td>
+                        <td><b>@Model.UserName</b></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday</td>
+                        <td><b>@Model.Birthday.GetValueOrDefault().ToShortDateString()</b></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><b>@Model.Email</b></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>
+                            @if(@Model.Gender != false)
+                            {
+                                <b>Nam</b>
+                            }
+                                else 
+                            {
+                                <b>Nữ</b>
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+

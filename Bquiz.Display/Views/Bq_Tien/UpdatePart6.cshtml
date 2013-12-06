@@ -1,0 +1,81 @@
+﻿@model Bquiz.Display.Models.ps_Group
+
+@{
+    ViewBag.Title = "UpdatePart6";
+    Layout = "~/Views/Shared/_EdittingLayout.cshtml";
+}
+
+<h2>@Model.Group.bq_Quiz.Name - @Model.Group.bq_Part.Name - @Model.Group.Name</h2>
+<input type="hidden" id="partordername" value="@String.Format("Part {0} : {1}",Model.Group.bq_Part.Order,Model.Group.bq_Part.Name)" />
+@using (Html.BeginForm())
+{
+   
+     <div class="Element">
+        <div class="ImportantElement" @*style="margin-bottom:-7px"*@>Paragraph*</div>
+        <div>
+            @(Html.Telerik().EditorFor(part8 => part8.Group.Paragraph).Name("Group.Paragraph").HtmlAttributes(new { style = "height:250px" }).Tools(tool => tool
+            .Clear().Bold().Italic().Underline().Separator()
+            .JustifyCenter().JustifyFull().JustifyLeft().JustifyRight().Separator()
+            .Indent().Outdent().Separator()
+            .InsertOrderedList().InsertUnorderedList().Separator()
+            .FontColor().BackColor()).HtmlAttributes(new { style = "margin-left:-4px" }))
+
+        </div>
+    </div>
+    for (int i = 0; i < Model.QuestionList.Count; i++ )
+    {
+        
+        //@Html.EditorFor(part8 => part8.QuestionList[i])
+        
+        <div class="Element">
+            @Html.HiddenFor(m => m.QuestionList[i].QuestionId)
+            <div class="ImportantElement">Question @Model.QuestionList[i].Order</div>
+            <div>
+                <table>
+                    <tr>
+                        <td style="text-align:right">A</td>
+                        <td>@Html.TextBoxFor(part8 => part8.QuestionList[i].OptionA, new { style = "width:300px" })</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">B</td>
+                        <td>@Html.TextBoxFor(part8 => part8.QuestionList[i].OptionB, new { style = "width:300px" })</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">C</td>
+                        <td>@Html.TextBoxFor(part8 => part8.QuestionList[i].OptionC, new { style = "width:300px" })</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">D</td>
+                        <td>@Html.TextBoxFor(part8 => part8.QuestionList[i].OptionD, new { style = "width:300px" })</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Answer</td>
+                        <td>
+                            @*@(Html.Telerik().ComboBoxFor(part8 => part8.QuestionList[i].Answer)
+                                .HtmlAttributes(new {style ="width:100px" }))*@
+                            @(Html.Telerik().ComboBoxFor(part8=>part8.QuestionList[i].Answer)
+                                .HtmlAttributes(new {style ="width:80px" })
+                                .Items(item => 
+                                {
+                                    item.Add().Text("A").Value("1");
+                                    item.Add().Text("B").Value("2");
+                                    item.Add().Text("C").Value("3");
+                                    item.Add().Text("D").Value("4");
+                                }) 
+                            )
+                                
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+    
+    <div class="Element">
+        @Html.HiddenFor(part8 => part8.Group.QuestionGroupId)
+        
+        <div style="width:120px; margin-left:auto">
+            <input type="submit" value="Publish" class="DarkMetroButton" style="border:none"/>
+        </div>
+    </div>
+}

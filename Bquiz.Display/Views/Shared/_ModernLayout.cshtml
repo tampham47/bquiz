@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+
+        <link href="/Content/ModernSite.css" rel="stylesheet" type="text/css"/>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.countdown.js")"></script>
+    
+        <script type="text/javascript">
+            function timeServer() {
+                var server = new Date();
+                server.getHours;
+                return server;
+            };
+        </script>
+        <script type="text/javascript">
+            function liftOff() {
+
+                //var TestId = $("input[type=hidden][id=15]").val();
+                //var GroupId = $("input[type=hidden][id=14]").val();
+                //var TestId = document.getElementById("15").value;
+                //var GroupId = document.getElementById("14").value;
+                //alert(TestId + "  " + GroupId);
+
+                var retVal = confirm("Đã hết thời gian làm bài! Chọn OK để chuyển đến trang xem kết quả!");
+                if (retVal == true) {
+                    alert("Chuyển trang xem kết quả! Ngay lập tức");
+                    return true;
+
+                } else {
+                    alert("Mọi kết quả đã được ghi nhận, bạn không thể sửa chữa hay làm thêm được nữa! Sau 1s sẽ chuyển sang trang xem kết quả");
+                    return false;
+                }
+
+            }
+
+        </script>
+       
+        @(Html.Telerik().StyleSheetRegistrar().DefaultGroup(group => group.Add("telerik.common.css").Add("telerik.metro.css").Combined(true).Compress(true)))
+    </head>
+    <body>
+        <div id="md-header">
+            @*<div class="md-wper">
+                <h3>Main content</h3>
+            </div>*@
+            <div class="page">
+                <div id="menu">
+                    <div style="display:inline-block; vertical-align:top; width:585px">
+                        <table style="height:50px">
+                            <tr>
+                                <td style="width:30px">
+                                    <img src="../../Content/images/Statue%20Of%20Liberty.png" width="45" /></td>
+                                <td style="width:70px">
+                                    <a href="/">
+                                        <b style="font-family:'Century Gothic'; font-size:18px">bquiz</b>
+                                    </a>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="width:253px; display:inline-block; float:right;" >
+                        @Html.Partial("/Views/Shared/_LogOnPartial.cshtml")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="md-main" style="margin-bottom: 50px">
+            <div class="md-wper">
+                <div id="md-content">
+                    @Html.Partial("/Views/QuestionGroup/_TopTestingNav.cshtml", Bquiz.BquizHelper.BquizHelpers.GetNav((Guid)ViewBag.GroupId ))
+
+                    @RenderBody()
+
+                    @Html.Partial("/Views/QuestionGroup/_BottomTestingNav.cshtml", Bquiz.BquizHelper.BquizHelpers.GetNav((Guid)ViewBag.GroupId ))
+                </div>
+            </div>
+
+            <div id="md-overlay">
+                <div class="md-wper">
+                    <div id="md-rightpanel">
+                        @RenderSection("RightPanel", required: false)
+
+                        <div class="MetroPanel">
+                            <div>
+                                <div id="counttime"></div>
+                                <script type="text/javascript">$('#counttime').countdown({ until: '+@ViewBag.TimeLeft', serverSync: timeServer, alwaysExpire: true, tickInterval: 1, onExpiry: liftOff })</script>
+                            </div>
+                        </div>
+
+                        <ul class="nav">
+                            <li style="background-color:#F5F5F5; text-align:center">
+                                <b>Count down</b>
+                            </li>
+
+                            <li style="background-color:#DC143C; color:white">
+                                <b>Done: @ViewBag.QuestionDone /200</b>
+                            </li>
+                        </ul>
+
+                        <div>
+                            <a href="/QuestionGroup/Result_Test?groupId=@ViewBag.GroupId&testId=@ViewBag.TestId" class="DarkMetroButton">Submit</a>
+                        </div>
+
+                        <br />
+                        @Html.Action("AnswerBoard", "QuestionGroup", new { testId = (Guid)ViewBag.TestId, groupId = (Guid)ViewBag.GroupId})
+                    </div>
+
+                    <div id="md-leftpanel" style="margin-bottom: 50px">
+                        @RenderSection("LeftPanel", required: false)
+                        @Html.Action("PublishingMenu", "Part", new { quizId = ViewBag.QuizId, testId = (Guid)ViewBag.TestId})
+                    </div>
+                </div>
+            </div>​
+        </div>
+
+        <!--<div id="footer">
+            <p>Tư Cuồng</p>
+        </div>-->
+        @(Html.Telerik().ScriptRegistrar().DefaultGroup(group => group.Combined(true).Compress(true)))
+    </body>
+</html>

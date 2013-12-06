@@ -1,0 +1,30 @@
+﻿@if(ps_Membership.IsAuthenticated()) 
+{
+    var user = ps_Membership.GetUser();
+    
+    <text>
+        <table style="height:56px">
+        <tr style="float:right; margin-top:10px">
+            <td></td>
+            <td style="width:30px">
+                <img src="../../Bquiz_Data/Avatars/@user.Avatar" width="30" />
+            </td>
+            <td >
+                <b><a href="/User">@user.UserName</a></b>
+            </td>
+        </tr>
+        </table>
+    </text>
+    
+}
+else 
+{
+    <table style="height:56px">
+        <tr style="float:right; margin-top:12px">
+            <td>
+                @Html.ActionLink("Login", "Login", "Account", null, new { @class="btn btn-info" })
+            </td>
+        </tr>
+    </table>
+    
+} 

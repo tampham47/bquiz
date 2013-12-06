@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BquizDB.Entities.bq_Answer>
+@{Layout = null;}
+
+<table class="table table-striped" style="margin-top:0px">
+    <tr>
+        <th>No.</th>
+        <th style="text-align: center">
+            <span class="label label-danger">A</span></th>
+        <th style="text-align: center">
+            <span class="label label-danger">B</span></th>
+        <th style="text-align: center">
+            <span class="label label-danger">C</span></th>
+        <th style="text-align: center">
+            <span class="label label-danger">D</span></th>
+    </tr>
+
+    @foreach (var answer in Model)
+    {
+        <tr>
+            <td style="padding-left:8px">@answer.bq_Question.Order</td>
+
+            @if (@answer.Answer == 1)
+            { 
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="1"  checked="checked" /></td>
+            }
+            else
+            {
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="1" /></td>
+            }
+            @if (@answer.Answer == 2)
+            {
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="2" checked="checked" /></td>
+            }
+            else
+            {
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="2"  /></td>    
+            }
+            @if (@answer.Answer == 3)
+            {
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="3"  checked="checked" /></td> 
+            }
+            else
+            {
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="3"  /></td> 
+            }
+            @if (@answer.Answer == 4)
+            { 
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="4"  checked="checked" /></td>
+            }
+            else
+            {
+                <td style="text-align: center">
+                    <input type="radio" name="@answer.QuestionId" value="4"  /></td>
+            }
+
+        </tr>
+        
+        @Html.HiddenFor(m => answer.TestId)
+    }
+</table>
+
+<script>
+    //Lấy questionId hiện tại và cập nhật mới lên server
+    (function () {
+        $('input[type=radio]').change(function () {
+
+            var testId = document.getElementById('answer_TestId').value;
+            var questionId = this.name;
+
+            $.ajax({
+                type: 'Post',
+                url: '@Url.Content("/group/updateAnswer")',
+                data: 'testId=' + testId + '&questionId=' + questionId + '&answer=' + this.value,
+                dataType: 'html',
+                success: (function (mess) {
+                    console.log(testId + ":" + questionId + ":" + mess);
+                })
+            });
+        });
+    })();
+</script>
+

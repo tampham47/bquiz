@@ -1,0 +1,64 @@
+﻿@model Bquiz.Display.Models.ps_Group
+
+@{
+    ViewBag.Title = "Run";
+    Layout = "~/Views/Shared/_zing_pure_layout.cshtml";
+}
+
+<style>
+    .breadcrumb>li>.divider {
+        padding:0px;
+    }
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+</style>
+
+@Html.Action("Navigation", new { quizId = Model.QuizId, testId = Model.TestId })
+
+<div class="row">
+    <div class="col-md-9">
+        <div>  
+            @*<p>@Model.Group.Name</p>*@
+
+            @if (Model.Group.Paragraph != null)
+            {
+                <p>
+                    @Html.Raw(Model.Group.Paragraph)
+                </p>
+            }
+
+            @if (Model.Group.MediaPath != null)
+            {
+                <audio controls="controls">
+                    <source src="\Bquiz_Data\Audio\@Model.Group.MediaPath" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            }
+        </div>
+
+        <div style="padding-bottom:20px">
+            @foreach (var question in Model.QuestionList)
+            {   
+                @Html.Partial("_QuestionView", question)
+            }
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        @Html.Partial("AnswerBoard", Model.AnswerList)
+        @{
+            var nav = Bquiz.Display.Helpers.ps_PageHelpers.GetNav(Model.Group.QuestionGroupId);
+        }
+        <div class="btn-group btn-block">
+            <a href="/group/run?groupId=@nav.PreGroup&testId=@Model.TestId"
+                class="btn btn-default col-md-6 btn-sm"> 
+                <span class="glyphicon glyphicon-chevron-left"></span> prev</a>
+
+            <a href="/group/run?groupId=@nav.NextGroup&testId=@Model.TestId"
+                class="btn btn-default col-md-6 btn-sm"> 
+                next <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+</div>

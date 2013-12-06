@@ -1,0 +1,44 @@
+﻿@if(ps_Membership.IsAuthenticated()) 
+{
+    var user = ps_Membership.GetUser();
+    
+    <text>
+        @*<table style="height:56px">
+        <tr style="float:right; margin-top:10px">
+            <td></td>
+            <td style="width:30px">
+                <img src="../../Bquiz_Data/Avatars/@user.Avatar" width="30" />
+            </td>
+            <td >
+                <b><a href="/User">@user.UserName</a></b>
+            </td>
+        </tr>
+        </table>*@
+    </text>
+    <div class="btn-group" style="float:right">
+        <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top:12px">
+            @user.UserName<span class="caret" style="margin-left:4px"></span>
+        </a>
+        <ul class="dropdown-menu pull-right">
+            <li><a href="/User/EditProfile">Edit Profile</a></li>
+            <li><a href="/Account/Manage">Change password</a></li>
+            <li><a href="/User/MyQuiz">Manage Your Quiz</a></li>
+            <li><a href="/User/History">Test History</a></li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, 
+                    new { id = "logoutForm", style="display:none" })) {
+                    @Html.AntiForgeryToken()
+                }
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            </li>
+        </ul>
+    </div>
+}
+else 
+{
+    <div>
+        <a href="@Url.Action("Login", "Account")" class="btn btn-info pull-right" style="margin-top:12px">
+            Login
+        </a>
+    </div>
+} 

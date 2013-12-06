@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+
+    @*sitefinity*@
+    @(Html.Telerik().StyleSheetRegistrar().DefaultGroup(group => group.Add("telerik.common.css").Add("telerik.metro.css").Combined(true).Compress(true)))</head>
+<body>
+    
+    @Html.Partial("_HeaderPartial")
+
+    <div class="page">
+        <div id="Main">
+            <div>
+                <div id="LeftPanel">
+                    @RenderSection("LeftPanel", required: false)
+                    @Html.Action("EdittingMenu", "Part", new { quizId = ViewBag.QuizId })
+                </div>
+
+                @*<div id="overlay">
+                    <div class="wraper">
+                        <div id="sidebar">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam est ac dolor auctor vestibulum. Duis tristique metus non diam pulvinar et vehicula elit venenatis. Aliquam vel convallis tellus. Aliquam erat volutpat. Ut venenatis, ligula ut aliquam imperdiet, quam nisl ultricies leo, eu laoreet arcu erat nec ante. Praesent ullamcorper faucibus dapibus.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam est ac dolor auctor vestibulum. Duis tristique metus non diam pulvinar et vehicula elit venenatis. Aliquam vel convallis tellus. Aliquam erat volutpat. Ut venenatis, ligula ut aliquam imperdiet, quam nisl ultricies leo, eu laoreet arcu erat nec ante. Praesent ullamcorper faucibus dapibus.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam est ac dolor auctor vestibulum. Duis tristique metus non diam pulvinar et vehicula elit venenatis. Aliquam vel convallis tellus. Aliquam erat volutpat. Ut venenatis, ligula ut aliquam imperdiet, quam nisl ultricies leo, eu laoreet arcu erat nec ante. Praesent ullamcorper faucibus dapibus.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam est ac dolor auctor vestibulum. Duis tristique metus non diam pulvinar et vehicula elit venenatis. Aliquam vel convallis tellus. Aliquam erat volutpat. Ut venenatis, ligula ut aliquam imperdiet, quam nisl ultricies leo, eu laoreet arcu erat nec ante. Praesent ullamcorper faucibus dapibus.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam est ac dolor auctor vestibulum. Duis tristique metus non diam pulvinar et vehicula elit venenatis. Aliquam vel convallis tellus. Aliquam erat volutpat. Ut venenatis, ligula ut aliquam imperdiet, quam nisl ultricies leo, eu laoreet arcu erat nec ante. Praesent ullamcorper faucibus dapibus.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam est ac dolor auctor vestibulum. Duis tristique metus non diam pulvinar et vehicula elit venenatis. Aliquam vel convallis tellus. Aliquam erat volutpat. Ut venenatis, ligula ut aliquam imperdiet, quam nisl ultricies leo, eu laoreet arcu erat nec ante. Praesent ullamcorper faucibus dapibus.</p>
+                        </div>
+                    </div>
+                </div>*@
+
+                <div id="MainPanel" style="height:100%">
+                    @RenderBody()
+                </div>
+
+                <div id="RightPanel">
+                    @RenderSection("RightPanel", required: false)
+                    
+                </div>
+            </div>
+         </div>
+    </div>
+
+    @(Html.Telerik().ScriptRegistrar().DefaultGroup(group => group.Combined(true).Compress(true)))</body>
+</html>

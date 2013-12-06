@@ -1,0 +1,159 @@
+﻿@model Bquiz.Display.Models.ps_Group
+
+@{
+    ViewBag.Title = "View";
+    //Layout = "~/Views/Shared/_PublishingLayout.cshtml";
+    Layout = "~/Views/Shared/_zing_layout.cshtml";
+}
+
+<style type="text/css">
+.slidingDiv {
+	
+	background-color: #9BCCFF;
+	padding:20px;
+	margin-top:10px;
+	border-bottom:3px solid #3399FF;
+    font-size:1.3em;
+}
+
+.show_hiden{
+    margin: 5px 10px;
+}
+   .show_hide {
+    width: 100%;
+    background-color: #EEEEEE;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+    .show_hide:hover {
+        color: #000000;
+        text-decoration: none;
+        background-color: #CCCCCC;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $(".slidingDiv").hide(400);
+        $(".show_hide").show(400);
+
+        $('.show_hide').each(function () {
+            $(this).children().click(function () {
+           
+                var src = $(this).attr('src');
+                var src1 = '/Content/images/ArrowHead-down.png';
+                var src2 = '/Content/images/ArrowHead-up.png';
+                switch (src) {
+                    case src1: $(this).attr('src', src2); break;
+                    default: $(this).attr('src', src1); break;
+                }
+                $(".slidingDiv").slideToggle(400);
+            })
+        })
+    })
+</script>
+
+<a href="#" class="show_hide" style="width:50px; margin-top:12px;">
+    <img src="/Content/images/ArrowHead-down.png" width="20" style="margin-top:-5px; margin-bottom:-5px">
+</a>  <br />
+
+@*<div class="slidingDiv" style="display:none" >
+
+    @switch (Model.Group.PartId)
+    {
+        case 1:
+            @Html.Partial("~/Views/Guid/_Part1.cshtml");
+            break;
+        case 2:
+            @Html.Partial("~/Views/Guid/_Part2.cshtml");
+            break;
+        case 3:
+            @Html.Partial("~/Views/Guid/_Part3.cshtml");
+            break;
+        case 4:
+            @Html.Partial("~/Views/Guid/_Part4.cshtml");
+            break;
+        case 5:
+            @Html.Partial("~/Views/Guid/_Part5.cshtml");
+            break;
+        case 6:
+            @Html.Partial("~/Views/Guid/_Part6.cshtml");
+            break;
+        case 7:
+            @Html.Partial("~/Views/Guid/_Part7.cshtml");
+            break;
+        case 8:
+            @Html.Partial("~/Views/Guid/_Part8.cshtml");
+            break;
+    }
+
+</div> *@   
+
+<div>  
+    <p>@Model.Group.Name</p>
+
+    @if (Model.Group.Paragraph != null)
+    {
+        <p>
+            @Html.Raw(Model.Group.Paragraph)
+        </p>
+    }
+
+    @if (Model.Group.MediaPath != null)
+    {
+        <audio controls="controls">
+            <source src="\Bquiz_Data\Audio\@Model.Group.MediaPath" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    }
+</div>
+
+<div style="padding-bottom:20px">
+    @foreach (var question in Model.QuestionList)
+    {
+        <div class="Element">
+            <div class="ImportantElement">Question @question.Order</div>
+
+            @if (question.Paragraph != null)
+            {
+                <div>
+                    @question.Paragraph
+                </div>
+            }
+            @if (question.MediaPath != null)
+            {
+                <audio controls="controls">
+                    <source src="\Bquiz_Data\Audio\@question.MediaPath" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            }
+            @if (question.ImagePath != null)
+            {
+                <img src="\Bquiz_Data\Images\@question.ImagePath" width="90%" />
+            }
+
+            <div>
+                <table>
+                    <tr>
+                        <td style="width:20px; vertical-align:top"><img src="../../Content/images/CharacterA-Smoke.png" width="20"/></td>
+                        <td>@question.OptionA</td>
+                    </tr>
+                    <tr>
+                        <td style="width:20px; vertical-align:top"><img src="../../Content/images/CharacterB-Smoke.png" width="20"/></td>
+                        <td>@question.OptionB</td>
+                    </tr>
+                    <tr>
+                        <td style="width:20px; vertical-align:top"><img src="../../Content/images/CharacterC-Smoke.png" width="20"/></td>
+                        <td>@question.OptionC</td>
+                    </tr>
+                    <tr>
+                        <td style="width:20px; vertical-align:top"><img src="../../Content/images/CharacterD-Smoke.png" width="20"/></td>
+                        <td>@question.OptionD</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,129 @@
+html, body, * {
+    padding: 0;
+    margin: 0;
+}
+p, h3 {
+    padding: 1em 0 .5em 0;
+}
+
+#md-header {
+    background-color: #EFEFEF;
+    position: fixed; /*margin-left: 260px;*/
+    height: 50px;
+    display: block;
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #C0C0C0;
+}
+
+#md-footer
+{
+    position: absolute;
+    height: 50px;
+    display: block;
+    bottom: 0;
+    background-color: #0094ff;
+}
+
+.md-wper
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+
+#md-main
+{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: 100%;
+    /*margin-left: auto;
+    margin-right: auto;*/
+}
+
+.md-wrapper {
+    min-width: 500px;
+    margin: 0 auto;
+}
+
+#md-content {
+    /*background: #bbb;*/
+    margin-right: 214px;  /* = sidebar width + some white space */
+    margin-left: 235px;
+
+    position : absolute;
+    width: 580px;
+    z-index: 100;
+}
+
+#md-overlay {
+    position: fixed;
+    top: 50px;
+    width: inherit;
+    /*height: 90%;*/
+    height: 100%;
+    height: -webkit-calc(100% - 50px);
+    height: -moz-calc(100% - 50px);
+    height: calc(100% - 50px);
+}
+
+#md-overlay .md-wrapper {
+    height: 90%;
+}
+
+#md-sidebar {
+    background: #ddd;
+    width: 250px;
+    float: right;
+    max-height: 100%;
+    overflow-y: hidden;
+}
+#md-sidebar:hover {
+    /*overflow-y: auto;*/
+}
+#md-sidebar>* {
+    max-width: 215px; /* leave some space for vertical scrollbar */
+}
+
+#md-rightpanel {
+    width: 170px;
+    float: right;
+    max-height: 100%;
+    overflow-y: hidden;
+
+    background-color:white;
+}
+
+#md-rightpanel:hover
+{
+    overflow-y: auto;
+}
+
+#md-rightpanel > * 
+{
+    max-width: 215px; /* leave some space for vertical scrollbar */
+}
+
+#md-leftpanel {
+    background: whitesmoke;
+    width: 220px;
+    float: left;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#md-leftpanel:hover
+{
+    overflow-y: auto;
+}
+
+#md-leftpanel > * 
+{
+    max-width: 215px; /* leave some space for vertical scrollbar */
+}

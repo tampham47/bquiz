@@ -1,0 +1,21 @@
+﻿@model Bquiz.Models.bq_TestingNav
+
+<div>
+    <p style="float:right;">
+        @if(Model.PreGroup != null)
+        {
+            <a href="/questiongroup/view?groupId=@Model.PreGroup&testId=@ViewBag.TestId" class="DarkMetroButton" style="width:50px;">
+                <img src="../../Content/images/Swap%20Left.png" width="20" style="margin-top:-5px; margin-bottom:-5px"/>
+            </a>
+        }
+
+        @if(Model.NextGroup!=null)
+        {
+            <a href="/questiongroup/view?groupId=@Model.NextGroup&testId=@ViewBag.TestId" class="DarkMetroButton" style="width:120px;">
+                Next
+                <img src="../../Content/images/ArrowHead-Right.png" width="10" />
+            </a>
+        }
+    </p>
+                        
+</div>

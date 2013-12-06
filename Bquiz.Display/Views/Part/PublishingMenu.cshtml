@@ -1,0 +1,82 @@
+﻿@using BquizDB.Business;
+@model IEnumerable <BquizDB.Entities.bq_Part>
+@{
+    Layout = null;
+    bl_QuestionGroup bl_group = new bl_QuestionGroup();
+}
+
+<div class="MetroLabel">Publish : @ViewBag.QuizName</div>
+<div>
+    <ul id="treeview">
+    @foreach(var level1 in Model)
+    {
+        <li>
+            <span>@String.Format("Part {0} : {1}", level1.Order, level1.Name)</span>
+            <ul>
+            @foreach (var level2 in bl_group.GetByPartId((Guid)ViewBag.QuizId, level1.PartId))
+            {
+                <li>
+                    <a href="#">@String.Format("Part {0} : {1}", level2.Order, level2.Name)</a>
+                </li>
+            }
+            </ul>
+        </li>
+    }
+    </ul>
+</div>
+
+<script type="text/javascript">
+    //function treeView() {
+    //    return $('#Publishing').data('tTreeView');
+    //}
+    //function getSelected() {
+    //    return $('#Publishing .t-state-selected').closest('li');
+    //}
+
+    //function Publishing_onSelect(e) {
+    //    // `this` is the DOM element of the treeview
+    //    var treeview = $(this).data('tTreeView');
+    //    var nodeElement = e.item;
+    //    treeview.expand(nodeElement);
+    //}
+
+    //function TreeView_onLoad() {
+    //    document.getElementById("partodername").value; // lấy name của part đang thi
+    //    var treeview = $('#Publishing').data('tTreeView');
+    //    var item = treeview.findByText(document.getElementById("partodername").value); // kiếm item theo text
+    //    treeview.expand(item);
+    //}
+
+    $(document).ready(function () {
+        $("treeview").kendoTreeView();
+    })
+</script>
+
+@*@(
+ Html.Telerik().TreeView()
+        .Name("Publishing")
+        .HtmlAttributes(new { style = "overflow-x: hidden;" })
+        .Items(items =>
+        {
+            foreach (var part in Model)
+            {
+                items.Add().Text(String.Format("Part {0} : {1}", part.Order, part.Name))
+                    .Items(group =>
+                    {
+                        using (Bquiz.Models.BluequizEntities db = new Bquiz.Models.BluequizEntities())
+                        {
+                            foreach (var gr in db.bq_QuestionGroup_GetByQuiz((Guid)ViewBag.QuizId, part.PartId).ToList())
+                            {
+                                group.Add().Text(String.Format("{1}", gr.Order, gr.Name))
+                                    .Url(String.Format("/QuestionGroup/View/?groupId={0}&testId={1}", gr.QuestionGroupId, ViewBag.TestId));
+                            }
+                        }
+                    });
+
+            }
+
+        })
+         .ClientEvents(events => events.OnSelect("Publishing_onSelect")
+         .OnLoad("TreeView_onLoad"))
+
+)*@

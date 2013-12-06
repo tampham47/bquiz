@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14449e07d70447028aeede84af396160" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_Answer" Width="1.5" PointX="10.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_Part" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_Question" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_QuestionGroup" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_Quiz" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_Test" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsxxvgkd_BquizModel.bq_User" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Answer_bq_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Answer_bq_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Part_bq_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_QuestionGroup_bq_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Question_bq_QuestionGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Question_bq_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_QuestionGroup_bq_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Quiz_bq_User" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Test_bq_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_Test_bq_User" ManuallyRouted="false" />
+        <AssociationConnector Association="tsxxvgkd_BquizModel.FK_bq_User_bq_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

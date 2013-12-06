@@ -1,0 +1,23 @@
+﻿@model IEnumerable <BquizDB.Entities.bq_Quiz>
+
+@{
+    ViewBag.Title = "Myquiz";
+    Layout = "~/Views/Shared/_zing_user_layout.cshtml";
+}
+
+@*<h2>Manage Your Quiz</h2>*@
+<div style="font-size:22px; margin-bottom:20px">
+    <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+        Manage Your Quiz</span>
+</div>
+
+@using (Html.BeginForm()) {
+     <div>
+        <div style="display:block">
+            @foreach (var test in Model)
+            {
+                @Html.Partial("/Views/User/_QuizViewByUser.cshtml",test)
+            }
+        </div>
+    </div>
+}

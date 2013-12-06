@@ -1,0 +1,23 @@
+﻿@model BquizDB.Entities.bq_Quiz
+
+<div class="QuizViewByUser" >
+    <table>
+        <tr >
+            <td style="width:75px">
+                <a href="/Test/PreStart?quizId=@Model.QuizId">
+                    <img src="../../Bquiz_Data/Images/CompanyIcon/@Model.CompanyIcon" width="75"/></a>
+            </td>
+            <td>
+                <b><a href="/Test/PreStart?quizId=@Model.QuizId">@Model.Name</a></b><br />
+                <span>@Model.bq_Test.Count người đã tham gia test</span><br />
+                <span>Max score :@Model.MaxScore</span>
+            </td>
+            <td style="width:70px">
+                <a href="/quiz/editting?quizId=@Model.QuizId" class="btn btn-info">Edit</a>
+            </td>
+            <td style="width:70px">
+                <a href="/quiz/delete?quizId=@Model.QuizId" class="btn btn-info">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

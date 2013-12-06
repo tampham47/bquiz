@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    
+    <!-- bootstrap -->
+    <link href="~/Content/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- main -->
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+    <!-- scripts -->
+    <script src="@Url.Content("~/Content/scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+</head>
+<body class="BodyBackground">
+    
+    @Html.Partial("_HeaderPartial")
+
+    <div class="page">
+        <div id="Main">
+            <div class="row">
+                <div class="col-md-3">
+                    @RenderSection("LeftPanel", required: false)
+
+                    @*<a href="#" class="DarkMetroButton">User Infomation</a>
+                    <div class="MetroPanel">
+                        <a href="/User/EditProfile">Edit Profile</a>
+                        <a href="/Account/Manage">Change password</a>
+                        <a href="/User/MyQuiz">Manage Your Quiz</a>
+                        <a href="/User/History">Test History</a>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        }
+                    </div>*@
+
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">User Information</a>
+                        <a href="/User/EditProfile" class="list-group-item">Edit Profile</a>
+                        <a href="/Account/Manage" class="list-group-item">Change password</a>
+                        <a href="/User/MyQuiz" class="list-group-item">Manage Your Quiz</a>
+                        <a href="/User/History" class="list-group-item">Test History</a>
+                        <a href="javascript:document.getElementById('logoutForm').submit()" class="list-group-item">Log off</a>
+                    </div>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, 
+                        new { id = "logoutForm", style="display:none" })) {
+                        @Html.AntiForgeryToken()
+                    }
+                </div>
+
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+         </div>
+    </div>
+
+    
+    <script src="~/Content/libs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿@model BquizDB.Entities.bq_Test
+
+<div class="testviewbyuser" >
+    <table>
+        <tr>
+            <td>
+                <td style="width:55px">
+                <a href="/Test/PreStart?quizId=@Model.QuizId">
+                    <img src="../../Bquiz_Data/Images/CompanyIcon/@Model.bq_Quiz.CompanyIcon" width="75"/></a>
+            </td>
+                <b><a href="/Test/PreStart?quizId=@Model.QuizId">@Model.bq_Quiz.Name</a></b>
+                <br />
+                <span>Start time: @Model.StartTime</span><br />
+                <span>End time: @Model.EndTime</span><br />
+                <span>Score: @Model.Mark</span>
+            </td>
+        </tr>
+    </table>
+</div>
+

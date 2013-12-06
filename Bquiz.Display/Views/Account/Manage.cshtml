@@ -1,0 +1,32 @@
+﻿@model Bquiz.Display.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+    Layout = "~/Views/Shared/_zing_user_layout.cshtml";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+
+@if (ViewBag.HasLocalPassword)
+{
+    <p class="label label-important">@ViewBag.StatusMessage</p>
+    @Html.Partial("_ChangePasswordPartial")
+}
+else
+{ 
+    @Html.Partial("_SetPasswordPartial")
+}
+
+@*<section id="externalLogins">
+    @Html.Action("RemoveExternalLogins")
+
+    <h3>Add an external login</h3>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

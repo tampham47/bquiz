@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5320DCCF-4A8E-403A-AD47-289BDCC28CD2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BquizDB</RootNamespace>
+    <AssemblyName>BquizDB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\bl_Answer.cs" />
+    <Compile Include="Business\bl_Part.cs" />
+    <Compile Include="Business\bl_Question.cs" />
+    <Compile Include="Business\bl_QuestionGroup.cs" />
+    <Compile Include="Business\bl_Quiz.cs" />
+    <Compile Include="Business\bl_Test.cs" />
+    <Compile Include="Business\bl_User.cs" />
+    <Compile Include="Entities\Bquiz.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bquiz.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Bquiz.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Bquiz.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bquiz.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_GetByGroupId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_GetByGroupId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_GetByTestId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_GetByTestId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_QuestionDone_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Answer_QuestionDone_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part_GetAllChilds_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part_GetAllChilds_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part_GetByParentId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Part_GetByParentId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup_GetByQuizId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup_GetByQuizId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup_GetByQuiz_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_QuestionGroup_GetByQuiz_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question_GetByQuestionGroupId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question_GetByQuestionGroupId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question_GetByQuizId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Question_GetByQuizId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz_GetByUserId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz_GetByUserId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz_GetEnable_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Quiz_GetEnable_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test_GetByUserId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test_GetByUserId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test_GetTop10_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_Test_GetTop10_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_User.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_User_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\bq_User_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetByGroupId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetByGroupId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetByTestId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetByTestId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_GetDoneQuestion_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_QuestionDone_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Answer_QuestionDone_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Part_GetAllChilds_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Part_GetAllChilds_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Part_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Part_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Part_GetByParentId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Part_GetByParentId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetByPartId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetByQuizId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetByQuizId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetByQuiz_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_QuestionGroup_GetByQuiz_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Question_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Question_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Question_GetByQuestionGroupId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Question_GetByQuestionGroupId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Question_GetByQuizId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Question_GetByQuizId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetByStatus_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetByUserId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetByUserId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetEnable_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Quiz_GetEnable_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Test_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Test_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Test_GetByUserId_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Test_GetByUserId_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Test_GetTop10_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_Test_GetTop10_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_User_GetById_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\qz_User_GetById_Result1.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Custom\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Entities\Bquiz.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Bquiz.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Entities\Bquiz.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Bquiz.edmx</DependentUpon>
+      <LastGenOutput>Bquiz.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\Bquiz.edmx.diagram">
+      <DependentUpon>Bquiz.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\Bquiz.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Bquiz.edmx</DependentUpon>
+      <LastGenOutput>Bquiz.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,13 @@
+/Bquiz
+
+/BquizDB/bin
+/BquizDB/obj
+
+/Bquiz.Admin/bin
+/Bquiz.Admin/obj
+/Bquiz.Admin/*.config
+
+/Bquiz.Display/bin
+/Bquiz.Display/obj
+/Bquiz.Display/Bquiz_Data
+/Bquiz.Display/*.config

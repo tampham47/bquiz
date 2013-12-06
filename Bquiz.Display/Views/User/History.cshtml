@@ -1,0 +1,58 @@
+﻿@model IEnumerable <BquizDB.Entities.bq_Test>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_zing_user_layout.cshtml";
+}
+
+@*<h2>Test History</h2>*@
+@*<ul class="breadcrumb">
+    <li><a href="#">Home</a> <span class="divider">/</span></li>
+    <li>Test History</li>
+</ul>*@
+
+<div style="margin:20px 0px 6px 0px">
+    <b style="font-family:'Century Gothic'; font-size:18px">Test History</b>
+</div>
+
+@*<p>
+    Use the form below to view your test history. 
+</p>*@
+
+<table>
+@using (Html.BeginForm()) {
+
+    foreach (var test in Model)
+    {
+    <tr>
+        <td style="width:75px">
+            <img src="../../Bquiz_Data/Images/CompanyIcon/@test.bq_Quiz.CompanyIcon" width="75"/>
+        </td>
+        <td>
+            <b>@test.bq_Quiz.Name</b> <br />
+            @if (test.StartTime.AddHours(2)> DateTime.Now)
+            {
+                <b>
+                    @((test.StartTime.AddHours(2)- DateTime.Now).TotalMinutes) minutes left.
+                </b>
+            } else
+            {
+                <i>Time out.</i>
+            }
+            <br />
+            Mark : <b>@test.Mark</b>
+        </td>
+        <td style="width:90px">
+            @if (test.StartTime.AddHours(2)> DateTime.Now)
+            {
+                <a href="/QuestionGroup/View?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" class="DarkMetroButton">Continue</a>
+            } else
+            {
+                <a href="/QuestionGroup/Result_Test?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" class="btn btn-success">Result</a>
+            }
+        </td>
+    </tr>
+        
+    }
+}
+</table>

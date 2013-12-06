@@ -1,0 +1,35 @@
+﻿@model Bquiz.Display.Models.ps_PreStartModel
+
+@{
+    ViewBag.Title = "PreStart";
+    Layout = "~/Views/Shared/_zing_pure_layout.cshtml";
+}
+
+<div class="row" style="margin-top:50px">
+    <div class="col-md-8" style="margin:0px">
+        <table>
+        <tr>
+            <td style="width:200px">
+                <img src="../../Bquiz_Data/Images/CompanyIcon/@Model.Quiz.CompanyIcon" 
+                    class="img-rounded" width="200" />
+            </td>
+            <td>
+                <b><a href="#">@Model.Quiz.Name</a></b><br />
+                <span>@Model.Quiz.bq_User.UserName</span><br />
+                <span>@Model.Quiz.bq_Test.Count người đã tham gia test</span><br />
+                <span>Max score : @Model.Quiz.MaxScore</span>
+            </td>
+        </tr>
+        </table>
+
+
+        <a href="/Test/Start?quizId=@Model.Quiz.QuizId" class="btn btn-success btn-lg" style="width:200px; margin-left:2px">
+            Start
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>        
+    </div>
+
+    <div class="col-md-4">
+        @Html.Action("_ViewTop10", new { quizId = Model.Quiz.QuizId })
+    </div>
+</div>

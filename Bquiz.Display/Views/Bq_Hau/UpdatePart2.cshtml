@@ -1,0 +1,78 @@
+﻿@model Bquiz.Display.Models.ps_Group
+
+@{
+    ViewBag.Title = "UpdatePart2";
+    Layout = "~/Views/Shared/_EdittingLayout.cshtml";
+}
+
+<h2>UpdatePart2</h2>
+<h2>@Model.Group.bq_Quiz.Name - @Model.Group.bq_Part.Name - @Model.Group.Name</h2>
+<input type="hidden" id="partordername" value="@String.Format("Part {0} : {1}",Model.Group.bq_Part.Order,Model.Group.bq_Part.Name)" />
+@using (Html.BeginForm())
+{
+  
+    
+    for (int i = 0; i < Model.QuestionList.Count; i++ )
+    {
+        
+        //@Html.EditorFor(part8 => part8.QuestionList[i])
+        
+        <div class="Element">
+            @Html.HiddenFor(m => m.QuestionList[i].QuestionId)
+            <div class="ImportantElement">Question @Model.QuestionList[i].Order</div>
+            <p>Am thanh hien co</p>
+            <audio controls="controls">
+                <source src="\Bquiz_Data\Audio\@(Model.QuestionList[i].MediaPath)" type="audio/mpeg">
+                 Your browser does not support the audio element.
+            </audio> 
+            <div>
+                <table>
+
+                    <tr>
+                        <td>Select Sound</td>
+                        <td>@(Html.Telerik().Upload()
+                            .Name("SoundUpload" + Model.QuestionList[i].QuestionId)
+                            .Multiple(false)
+                            .Async(async => async
+                                .Save("UploadSounds", "File", "attachments", new { questionId = Model.QuestionList[i].QuestionId }).AutoUpload(true))
+                                
+                        )
+
+                        </td>
+
+
+                    </tr>
+
+
+                    <tr>
+                        <td>Answer</td>
+
+                        @*@(Html.Telerik().ComboBoxFor(part8 => part8.QuestionList[i].Answer)
+                                .HtmlAttributes(new {style ="width:100px" }))*@
+                        <td>
+                        @(Html.Telerik().ComboBoxFor(part2 => part2.QuestionList[i].Answer)
+                                .HtmlAttributes(new { style = "width:80px" })
+                                .Items(item =>
+                                {
+                                    item.Add().Text("A").Value("1");
+                                    item.Add().Text("B").Value("2");
+                                    item.Add().Text("C").Value("3");
+
+                                }) 
+                            )
+
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+    
+    <div class="Element">
+        @Html.HiddenFor(part2 => part2.Group.QuestionGroupId)
+        
+        <div style="width:120px; margin-left:auto">
+            <input type="submit" value="Publish" class="DarkMetroButton" style="border:none"/>
+        </div>
+    </div>
+}

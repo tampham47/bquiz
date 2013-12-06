@@ -1,0 +1,208 @@
+﻿@model BquizDB.Entities.bq_Quiz
+
+@{
+    ViewBag.Title = "Create new quiz";
+}
+
+<h2>Create New Quiz</h2>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#no').bind('valueChange', function (e) {
+            //alert($(this).val());
+            var number = $(this).val();
+
+            while (my_div.childElementCount > 0) {
+                my_div.removeChild(my_div.lastChild);
+
+            }
+            //var abc = "(Html.Telerik().ComboBox().Name("+"ComboBox)"+".Items(item => {item.Add().Text("+"Item3)"+".Value(3);})";
+            for (var i = 1; i <= number; i++) {
+
+                //if(e.value ==7)
+
+                my_div.innerHTML = my_div.innerHTML + "<select id=num" + i + " name =num" + i + ">@for (var i = 2; i <=5; i++){<option>@i</option>}</select>"
+                //"<br>Gia tri " + i + " <input type='text' id=" + i + " name=" + i + " value =" + i + " width=25 >"
+            }
+            if (number == 7)
+                for (var i = 1; i <= 7; i++)
+                    document.getElementById("num" + i.toString()).selectedIndex = 2;       // ô select có giá trị từ 2,3,4,5 ; tương ứng với từng vị trí là 0,1,2,3                
+
+            if (number == 8) {
+                for (var i = 1; i <= 4; i++)
+                    document.getElementById("num" + i.toString()).selectedIndex = 1;//giá trị 3
+
+                for (var i = 5; i <= 8; i++)
+                    document.getElementById("num" + i.toString()).selectedIndex = 2;//giá trị 4
+            }
+            if (number == 9) {
+                for (var i = 1; i <= 8; i++)
+                    document.getElementById("num" + i.toString()).selectedIndex = 1;
+                document.getElementById("num9").selectedIndex = 2;
+            }
+            if (number == 10) {
+                for (var i = 1; i <= 5; i++) {
+                    document.getElementById("num" + i.toString()).selectedIndex = 0;//giá trị 2
+                    document.getElementById("num6").selectedIndex = 1;
+                    document.getElementById("num7").selectedIndex = 1;
+                    document.getElementById("num8").selectedIndex = 2;
+                    document.getElementById("num9").selectedIndex = 2;
+                    document.getElementById("num10").selectedIndex = 2;
+
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function xoa() {
+        while (my_div.childElementCount > 0)
+        {
+            my_div.removeChild(my_div.lastChild);
+            
+        }
+    }
+    function summit() {
+        if (document.getElementById("QuizTitle").value == "")
+        {
+            //alert(" Hay nhap ten quiz");
+            document.getElementById("QuizTitleError").innerHTML = "Please , Insert QUIZ name";
+            return;
+        }
+        if (document.getElementById("imagesname").value == "") {
+            alert(" Please , choose images ");
+            return;
+        }
+        var t = my_div.childElementCount;// numberGroup
+        if (t == 0) {
+            alert("Please , choose Number Group");
+            return;
+        }
+        var sum = 0;
+        while (t > 0) {
+            sum = sum + parseInt(document.getElementById("num" + t.toString()).value);
+            t--;
+        }
+
+        if (sum != 28)
+        {
+            alert("total not equal to 28, please again"); return;
+        }
+        else
+        {
+            sbm.innerHTML = sbm.innerHTML + "<input type ='submit' value = 'Create New Quiz' class ='DarkMetroButton' style='width:140px; border:none' />"           
+        }       
+       
+    }
+</script>
+<script type="text/javascript">
+     
+    function onSuccess(e) {
+        // Array with information about the uploaded files
+        var files = e.files;
+
+        if (e.operation == "upload") {
+            $.each(files, function () {
+                
+                //alert(this.name)
+                imagesname.value = this.name;
+                while (imagesshow.childElementCount > 0) {
+                    imagesshow.removeChild(imagesshow.lastChild);
+
+                }
+                imagesshow.innerHTML = imagesshow.innerHTML + "<img src=\\Bquiz_Data\\Images\\CompanyIcon\\" + this.name + " height =80 width=80/>";
+                   // e.preventDefault();
+                   // return false;              
+            });
+
+        }
+    }
+    function onUpload(e) {
+        // Array with information about the uploaded files
+        var files = e.files;
+
+        // Check the extension of each file and abort the upload if it is not .jpg ,.png ,.bmp
+        $.each(files, function () {
+            //alert(this.extension);
+            if ((this.extension == ".jpg") ||(this.extension == ".png")||(this.extension ==".bmp")) {
+                return true;
+            }
+        });
+    }
+
+</script>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <table>  
+            <tr>
+                <td style="width:140px"><b>Quiz Title</b></td>
+                <td>
+                    <input type="text" id="QuizTitle" name="QuizTitle" value="" placeholder="quiz title" style="height:20px" /><br />
+                    <span class="hide error" id="QuizTitleError"></span>
+                </td>
+                <td style="width:80px"></td>
+            </tr>
+            <tr>
+                <td><b>Select Images</b></td>
+                <td>   
+                    <input type="text" value="upload" />
+                    @*@(Html.Telerik().Upload()
+                        .Name("attachments")
+                        .HtmlAttributes(new { style = "margin-left:-5px" })
+                        .Multiple(false)
+                        .Async(async => async
+                            .Save("Upload_QuizImages", "File")
+                        )
+                        .ClientEvents(events => events
+                            .OnUpload("onUpload")
+                            .OnSuccess("onSuccess"))
+                    )*@
+                </td>
+                <td id="imagesshow"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="imagesname" name="imagesname" type="text" value="" hidden/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <br /><br />
+    <i>In geometry toeic test, amount question of part 7 is not fixed. That, we need to add a info number of your as amount questions group and amount questions in per group to completefailed to initialize.</i><br />
+    <table>
+        <tr>
+            <td style="width:140px"><b>Number of Group</b></td>
+            <td>
+                <input type="text" value="combo" />
+                @*@(Html.Telerik().ComboBox().Name("no")
+                    .HtmlAttributes(new {style ="width:160px" })
+                    .Items(item => 
+                    {
+                        item.Add().Text("7 question group").Value("7");
+                        item.Add().Text("8 question group").Value("8");
+                        item.Add().Text("9 question group").Value("9");
+                        item.Add().Text("10 question group").Value("10");
+                    }) 
+                )*@
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td id="my_div">
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" value="Check" class="btn btn-info" onClick="return summit();" style="width:120px; border:none" />
+                <div id ="sbm"></div>
+            </td>
+        </tr>
+    </table>
+    <br />
+}
+

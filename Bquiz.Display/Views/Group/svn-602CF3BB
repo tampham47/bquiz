@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Bquiz.Models.bq_Answer>
+@{Layout = null;}
+
+<table style="margin-top:0px">
+    
+    <tr>
+        <th>No.</th>
+        <th style="text-align:center"><img src="../../Content/images/roundA.png" width="20"/></th>
+        <th style="text-align:center"><img src="../../Content/images/roundB.png" width="20"/></th>
+        <th style="text-align:center"><img src="../../Content/images/roundC.png" width="20"/></th>
+        <th style="text-align:center"><img src="../../Content/images/roundD.png" width="20"/></th>
+    </tr>
+   
+    @foreach (var answer in Model)
+    {
+        <tr>
+            
+            <td>@answer.bq_Question.Order</td>            
+            <td style="text-align:center"><input type="radio" name="@answer.QuestionId" value="1" questionId="@answer.QuestionId" /></td>
+            <td style="text-align:center"><input type="radio" name="@answer.QuestionId" value="2" questionId="@answer.QuestionId" /></td>
+            <td style="text-align:center"><input type="radio" name="@answer.QuestionId" value="3" questionId="@answer.QuestionId" /></td>
+            <td style="text-align:center"><input type="radio" name="@answer.QuestionId" value="4" questionId="@answer.QuestionId" /></td>
+           
+        </tr>
+       
+    }
+    
+</table>
+
+<script>
+
+    //Lấy questionId hiện tại và cập nhật mới lên server
+    (function () {
+        $('input[type=radio]').change(function ()
+        {
+            alert(this.name + "--> value :" + this.value);
+            $.ajax({
+                type: 'POST',
+                url: "/Test/Change",
+                data: "?testId=" + this.name + "?questionId=" + this.name + "?answer=" + this.value,
+                success: (function () { alert(result.status+ "Mo phat"); } ),
+                dataType: JSON
+            });
+            //ajax function 
+            //request lên một action trên server.
+
+        });
+    })();
+</script>

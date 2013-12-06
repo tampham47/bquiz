@@ -1,0 +1,37 @@
+﻿@model List<BquizDB.Entities.bq_Test>
+
+@{Layout = null;}
+
+<table class="table table-condensed">
+    <tr>
+        <th style="width:30px">No.</th>
+        <th>Student</th>
+        <th>Mark</th>
+    </tr>
+    @{var i = 0;}
+    @foreach (var test in Model)
+    {
+        i++;
+        <tr>
+            <td>@i</td>
+            <td>@test.bq_User.UserName</td>
+            <td>@test.Mark</td>
+        </tr>
+    }
+</table>
+
+@*<div class="list-group">
+    <a href="#" class="list-group-item active">
+        Top5
+    </a>
+
+    @foreach (var test in Model)
+    {
+        <a href="#" class="list-group-item">
+            <div class="row">
+                <span class="col-md-8">@test.bq_User.UserName</span>
+                <span class="col-md-4">@test.Mark</span>
+            </div>
+        </a>
+    }
+</div>*@

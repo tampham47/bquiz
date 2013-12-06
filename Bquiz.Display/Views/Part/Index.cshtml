@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BquizDB.Entities.bq_Part>
+@using BquizDB.Business;
+@{
+    ViewBag.Title = "Index";
+    bl_Part bl_part = new bl_Part();
+    bl_QuestionGroup bl_group = new bl_QuestionGroup();
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model) {
+    <h3><b>Part @item.Order : @item.Name</b> (@item.NumberOfItems items)</h3>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Items</th>
+            <th>Items</th>
+        </tr>
+        @foreach(var part in bl_part.GetByParentId(item.PartId))
+        {
+            <tr>
+                <td>
+                    <a href="/QuestionGroup?partId=@part.PartId&quizId=@ViewBag.QuizId"><b>Part @part.Order : @part.Name</b></a>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => part.NumberOfItems)
+                </td>
+                <td>
+                    @if (bl_group.GetByPartId(@ViewBag.quizId, part.PartId) == null) 
+                    {
+                        if(part.PartId==1)
+                        { 
+                                <a href ="bq_Hau/NewPart1?quizId=@ViewBag.quizId">Create new part1 </a>
+                        }
+                      
+                        if(part.PartId ==2)
+                        {
+                            <a href ="bq_Hau/NewPart2?quizid=@ViewBag.quizId">Create new part2 </a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
