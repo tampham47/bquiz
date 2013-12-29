@@ -1,8 +1,8 @@
 ﻿@model Bquiz.Display.Models.ps_PartViewItem
 
 <div class="btn-group">
-    <a href="#" class="btn btn-link" data-toggle="dropdown">
-        @Model.PartName</a>
+    <button class="btn-bquiz btn btn-link" data-toggle="dropdown">
+        @Model.PartName</button>
 
     <ul class="dropdown-menu" role="menu">
         @foreach(var item in Model.Groups)
@@ -10,9 +10,7 @@
         <li>
             <a href="@Url.Action("Run", "Group", 
                 new { testId=Model.TestId, groupId=item.QuestionGroupId })">
-
                 @item.Name
-                @*<span class="label label-success pull-right">D</span>*@
 
                 <span class="label label-success pull-right">
                     <span class="glyphicon glyphicon-ok"></span>

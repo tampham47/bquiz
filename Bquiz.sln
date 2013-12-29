@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bquiz.Admin", "Bquiz.Admin\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bquiz.Display", "Bquiz.Display\Bquiz.Display.csproj", "{7887B1A7-4C8E-4BC3-8B27-F4CCA774CE49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bquiz.Services", "Bquiz.Services\Bquiz.Services.csproj", "{8088B271-E78E-4EE9-B8B6-ED7A31A534EC}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -35,6 +37,10 @@ Global
 		{7887B1A7-4C8E-4BC3-8B27-F4CCA774CE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7887B1A7-4C8E-4BC3-8B27-F4CCA774CE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7887B1A7-4C8E-4BC3-8B27-F4CCA774CE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8088B271-E78E-4EE9-B8B6-ED7A31A534EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8088B271-E78E-4EE9-B8B6-ED7A31A534EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8088B271-E78E-4EE9-B8B6-ED7A31A534EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8088B271-E78E-4EE9-B8B6-ED7A31A534EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

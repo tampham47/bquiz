@@ -1,0 +1,51 @@
+﻿ @model IEnumerable<BquizDB.Entities.bq_Answer>
+
+@{
+    ViewBag.Title = "Kết quả đợt thi";
+}
+
+@*<div style="margin-bottom:15px;">
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+            @ViewBag.Title</span>
+    </div>
+</div>*@
+
+@*<div style="width:100%; background-color: #fef0f4; padding:4px; margin-bottom:10px">
+<table>
+    <tbody><tr>
+        <td style="width:120px">
+            <img src="../../Bquiz_Data/Images/CompanyIcon/dongvatthailan15.jpg" class="img-rounded" width="120">
+        </td>
+        <td>
+            <h3><b>TOEIC RESULT</b></h3>
+            <b><a href="#">TOEIC AN1_06_12_201</a></b><br>
+            <span>User: Tam Pham</span><br>
+            <span>Mark: 670</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>*@
+
+<div style="width:100%; background-color: #fef0f4; padding:4px; margin-bottom:10px;text-align:center">
+    <h3><b>TOEIC RESULT</b></h3>
+    <b><a href="#">TOEIC AN1_06_12_201</a></b><br>
+    <span>User: Tam Pham</span><br>
+    <span>Mark: 670</span>
+</div>
+
+<div class="row">
+@foreach (var item in Model) {
+    <div class="col-sm-2">
+        @if (item.Answer == item.bq_Question.Answer)
+        {
+            <span class="label label-success">@item.bq_Question.Order.ToString("D3")</span>
+        } else {
+            <span class="label label-danger">@item.bq_Question.Order.ToString("D3")</span>
+        }
+        <span class="label label-primary">@item.GetStrAnswer()</span>
+        <span class="label label-default">@item.bq_Question.GetStrAnswer()</span>
+    </div>
+}
+</div>

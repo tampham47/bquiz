@@ -37,15 +37,15 @@
                     <div class="list-group">
                         <a href="#" class="list-group-item active">User Information</a>
                         <a href="/User/EditProfile" class="list-group-item">Edit Profile</a>
-                        <a href="/Account/Manage" class="list-group-item">Change password</a>
+                        @*<a href="/Account/Manage" class="list-group-item">Change password</a>*@
                         <a href="/User/MyQuiz" class="list-group-item">Manage Your Quiz</a>
                         <a href="/User/History" class="list-group-item">Test History</a>
-                        <a href="javascript:document.getElementById('logoutForm').submit()" class="list-group-item">Log off</a>
+                        @*<a href="javascript:document.getElementById('logoutForm').submit()" class="list-group-item">Log off</a>*@
                     </div>
-                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, 
+                    @*@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, 
                         new { id = "logoutForm", style="display:none" })) {
                         @Html.AntiForgeryToken()
-                    }
+                    }*@
                 </div>
 
                 <div class="col-sm-9">

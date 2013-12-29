@@ -2,6 +2,7 @@ Bquiz.suo
 Bquiz.v11.suo
 
 /Bquiz
+/Bquiz.ZingMe
 
 /BquizDB/bin
 /BquizDB/obj
@@ -14,3 +15,6 @@ Bquiz.v11.suo
 /Bquiz.Display/obj
 /Bquiz.Display/Bquiz_Data
 /Bquiz.Display/*.config
+
+/Bquiz.Services/bin
+/Bquiz.Services/obj

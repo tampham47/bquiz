@@ -1,4 +1,4 @@
-﻿<div id="header">
+﻿@*<div id="header">
     <div class="page">
         <div id="menu">
             <div style="display:inline-block; vertical-align:top;">
@@ -21,4 +21,24 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
+
+
+<ol class="breadcrumb" style="margin-bottom:10px">
+    <li><a href="/">Bquiz</a></li>
+    <li><a href="/">Danh sách đề thi</a></li>
+    @*<li class="active">Data</li>*@
+
+    <li class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Setting <b class="caret"></b></a>
+
+        <ul class="dropdown-menu">
+            <li><a href="/User/MyQuiz">Manage Your Quiz</a></li> 
+            <li><a href="/User/History">Test History</a></li> 
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </li>
+</ol>
+

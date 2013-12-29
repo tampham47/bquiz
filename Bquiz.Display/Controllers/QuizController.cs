@@ -14,19 +14,6 @@ namespace Bquiz.Display.Controllers
 {
     public class QuizController : Controller
     {
-        //BluequizEntities db = new BluequizEntities();
-        //
-        // GET: /Quiz/
-
-        public ActionResult Index()
-        {
-            bl_Quiz bl_quiz = new bl_Quiz();
-            var quiz = bl_quiz.GetByStatus(0);
-            return View(quiz);
-        }
-
-        #region partial
-
         public ActionResult Publishing(Guid quizId, Guid testId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
@@ -58,7 +45,15 @@ namespace Bquiz.Display.Controllers
         //    return View();
         //}
 
-        #endregion
+        //
+        // GET: /Quiz/
+
+        public ActionResult Index()
+        {
+            bl_Quiz bl_quiz = new bl_Quiz();
+            var quiz = bl_quiz.GetByStatus(0);
+            return View(quiz);
+        }
 
         [Authorize]
         public ActionResult New()
@@ -66,7 +61,6 @@ namespace Bquiz.Display.Controllers
             var quiz = new bq_Quiz();
             return View(quiz);
         }
-
 
         [HttpPost]
         public ActionResult New(bq_Quiz quiz)
@@ -108,5 +102,15 @@ namespace Bquiz.Display.Controllers
             }
         }
 
+        public ActionResult Result(Guid testId)
+        {
+            bl_Answer blAnswer = new bl_Answer();
+            var data = blAnswer
+                .GetByTestId(testId)
+                .OrderBy(m => m.bq_Question.Order)
+                .ToList();
+
+            return View(data);
+        }
     }
 }

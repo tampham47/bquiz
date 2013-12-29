@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "History";
-    Layout = "~/Views/Shared/_zing_user_layout.cshtml";
+    //Layout = "~/Views/Shared/_zing_user_layout.cshtml";
 }
 
 @*<h2>Test History</h2>*@
@@ -11,15 +11,34 @@
     <li>Test History</li>
 </ul>*@
 
-<div style="margin:20px 0px 6px 0px">
+@*<div style="margin:20px 0px 6px 0px">
     <b style="font-family:'Century Gothic'; font-size:18px">Test History</b>
+</div>*@
+
+<div style="margin-bottom:15px;">
+    
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+            Test History</span>
+    </div>
+
+    @*<div class="row">
+        
+
+        <div class="col-md-8">
+            <div style="font-size:22px;">
+                <span class="label label-default" style="font-weight:lighter">Danh sách đề thi</span>
+            </div>
+        </div>
+        
+        <div class="col-md-2 col-md-offset-2">
+            <a href="/Quiz/New" class="btn btn-success btn-block">
+                <i class="icon-plus"></i>quiz</a>
+        </div>
+    </div>*@
 </div>
 
-@*<p>
-    Use the form below to view your test history. 
-</p>*@
-
-<table>
+@*<table>
 @using (Html.BeginForm()) {
 
     foreach (var test in Model)
@@ -45,14 +64,69 @@
         <td style="width:90px">
             @if (test.StartTime.AddHours(2)> DateTime.Now)
             {
-                <a href="/QuestionGroup/View?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" class="DarkMetroButton">Continue</a>
+                <a href="/QuestionGroup/View?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" 
+                    class="btn btn-success">Continue <span class="glyphicon glyphicon-chevron-right"></span> </a>
             } else
             {
-                <a href="/QuestionGroup/Result_Test?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" class="btn btn-success">Result</a>
+                <a href="/QuestionGroup/Result_Test?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" 
+                    class="btn btn-default">Result <span class="glyphicon glyphicon-chevron-right"></span></a>
             }
         </td>
     </tr>
         
     }
 }
-</table>
+</table>*@
+
+@*<ul class="media-list">
+@foreach (var test in Model)
+{
+    <li class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="../../Bquiz_Data/Images/CompanyIcon/@test.bq_Quiz.CompanyIcon" width="75"/>
+        </a>
+        <div class="media-body">
+            @if (test.StartTime.AddHours(2)> DateTime.Now)
+            {
+                <a href="/group/run?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" 
+                    class="btn btn-success pull-right">Continue <span class="glyphicon glyphicon-chevron-right"></span> </a>
+            } else
+            {
+                <a href="/group/Result_Test?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" 
+                    class="btn btn-default pull-right">Result <span class="glyphicon glyphicon-chevron-right"></span></a>
+            }
+
+            <b>@test.bq_Quiz.Name</b><br />
+            <span>Test date: @test.StartTime.ToLocalTime()</span><br />
+            <span>Mark: 720</span>   
+        </div>
+    </li>
+}
+</ul>*@
+
+<div class="row">
+@foreach (var test in Model)
+{
+    <div class="col-sm-6" style="margin-bottom:4px">
+        <a class="pull-left" href="#">
+            <img class="media-object img-rounded" src="../../Bquiz_Data/Images/CompanyIcon/@test.bq_Quiz.CompanyIcon" width="75"/>
+        </a>
+        <div class="media-body" style="padding:4px 0px 0px 4px">
+            @if (test.StartTime.AddHours(2)> DateTime.Now)
+            {
+                <a href="/group/run?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" 
+                    class="btn btn-success pull-right btn-sm">Continue <span class="glyphicon glyphicon-chevron-right"></span> </a>
+            } else
+            {
+                <a href="/quiz/result?testId=@test.TestId" 
+                    class="btn btn-default pull-right btn-sm">Result 
+                    <span class="glyphicon glyphicon-chevron-right"></span></a>
+            }
+
+            <b>@test.bq_Quiz.Name</b><br />
+            <span>Test date: @test.StartTime.ToLocalTime()</span><br />
+            <span>Mark: 720</span>   
+        </div>
+    </div>
+}
+</div>

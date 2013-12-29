@@ -101,6 +101,7 @@ page width. Or, you can specify an exact pixel width. */
 {
     /*width: 990px;*/
     width:836px; /*zingme*/
+    margin-top:10px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -389,7 +390,6 @@ div#title
 #Main {
     margin-bottom: 40px;
     background: White;
-    margin-top:20px;
     padding: 2px 0px 10px 0px;
 }
 
@@ -761,4 +761,28 @@ img
     background-repeat: repeat-x;
     background-position: bottom;
     background-attachment: fixed;
+}
+
+.btn-bquiz {
+    border-bottom-width:3px; 
+    border-bottom-color:green; 
+    padding-bottom:2px;
+    margin-right:2px;
+    text-decoration:none;
+}
+
+.btn-bquiz:hover {
+    border-bottom-width:3px; 
+    border-bottom-color:green; 
+    padding-bottom:2px;
+    background-color:#defbb5;
+    text-decoration:none;
+}
+
+.open .btn-bquiz {
+    border-bottom-width:3px; 
+    border-bottom-color:green; 
+    padding-bottom:2px;
+    background-color:#defbb5;
+    text-decoration:none;
 }

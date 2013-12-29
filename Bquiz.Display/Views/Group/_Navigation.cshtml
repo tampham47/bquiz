@@ -87,7 +87,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="breadcrumb" style="padding:2px">
+<div style="padding:2px; margin-bottom:10px">
     @foreach(var group in Model)
     {
         @Html.Partial("_NavigationItem", group)
@@ -105,3 +105,22 @@
         </div>
     </div>
 </div>
+
+@*<div class="breadcrumb" style="padding:2px">
+    @foreach(var group in Model)
+    {
+        @Html.Partial("_NavigationItem", group)
+    }
+
+    <div class="controls pull-right">
+        <a href="#" class="btn btn-link">44p:20s</a>
+        <div class="btn-group">
+            <a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-th"></span></a>
+        
+            <a href="#" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-ok"></span>
+                submit</a>
+        </div>
+    </div>
+</div>*@

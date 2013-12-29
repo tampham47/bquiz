@@ -10,6 +10,8 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Bquiz.Display.Filters;
 using Bquiz.Display.Models;
+using BquizDB.Utility;
+using BquizDB.Business;
 
 namespace Bquiz.Display.Controllers
 {
@@ -29,15 +31,8 @@ namespace Bquiz.Display.Controllers
             return View();
         }
 
-        [AllowAnonymous]
-        public ActionResult Zing(string sign_user, string username)
-        {
-            return Redirect("/");
-        }
-
         //
         // POST: /Account/Login
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -61,6 +56,26 @@ namespace Bquiz.Display.Controllers
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
+        }
+
+        //zing
+        [AllowAnonymous]
+        public ActionResult Zing(string signed_request)
+        {
+            ZingMe zing = new ZingMe(signed_request);
+            bl_User bluser = new bl_User();
+            var zingUser = zing.GetInfo();
+            string userName = "zing." + zingUser.UserName;
+            
+            var user = bluser.GetByUserName(userName);
+            if (user == null)
+            {
+                bluser.Create(Guid.NewGuid(), userName, "", false, DateTime.Now);
+            }
+
+            OAuthWebSecurity.CreateOrUpdateAccount("zing", zingUser.Id, userName);
+            FormsAuthentication.SetAuthCookie(userName, true);
+            return Redirect("/");
         }
 
         //
