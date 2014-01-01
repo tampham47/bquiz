@@ -41,10 +41,6 @@
             <End Role="bq_Quiz" EntitySet="bq_Quiz" />
             <End Role="bq_QuestionGroup" EntitySet="bq_QuestionGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK_bq_Quiz_bq_User" Association="tsxxvgkd_BquizModel.Store.FK_bq_Quiz_bq_User">
-            <End Role="bq_User" EntitySet="bq_User" />
-            <End Role="bq_Quiz" EntitySet="bq_Quiz" />
-          </AssociationSet>
           <AssociationSet Name="FK_bq_Test_bq_Quiz" Association="tsxxvgkd_BquizModel.Store.FK_bq_Test_bq_Quiz">
             <End Role="bq_Quiz" EntitySet="bq_Quiz" />
             <End Role="bq_Test" EntitySet="bq_Test" />
@@ -118,12 +114,16 @@
           <Property Name="QuizId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="FinanceCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="ntext" />
           <Property Name="CompanyIcon" Type="varchar" Nullable="false" MaxLength="60" />
           <Property Name="NumberOfTesting" Type="int" Nullable="false" />
           <Property Name="MaxScore" Type="int" Nullable="false" />
-          <Property Name="DateCreated" Type="smalldatetime" Nullable="false" />
+          <Property Name="FinanceCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnglishCenter" Type="nvarchar" MaxLength="60" />
+          <Property Name="EnglishCenterIcon" Type="varchar" MaxLength="60" />
+          <Property Name="EnglishCenterDescription" Type="ntext" />
           <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="bq_Test">
           <Key>
@@ -229,18 +229,6 @@
             </Principal>
             <Dependent Role="bq_QuestionGroup">
               <PropertyRef Name="QuizId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_bq_Quiz_bq_User">
-          <End Role="bq_User" Type="tsxxvgkd_BquizModel.Store.bq_User" Multiplicity="1" />
-          <End Role="bq_Quiz" Type="tsxxvgkd_BquizModel.Store.bq_Quiz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="bq_User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="bq_Quiz">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -444,6 +432,14 @@
           <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="financeCompany" Type="nvarchar" Mode="In" />
           <Parameter Name="companyIcon" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="qz_Quiz_Create2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="quizId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="englishCenter" Type="nvarchar" Mode="In" />
+          <Parameter Name="englishCenterIcon" Type="varchar" Mode="In" />
+          <Parameter Name="englishCenterDescription" Type="ntext" Mode="In" />
         </Function>
         <Function Name="qz_Quiz_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="quizId" Type="uniqueidentifier" Mode="In" />
@@ -808,6 +804,14 @@
             <Parameter Name="quizId" Mode="In" Type="Guid" />
             <Parameter Name="partId" Mode="In" Type="Byte" />
           </FunctionImport>
+          <FunctionImport Name="qz_Quiz_Create2" ReturnType="Collection(Int32)">
+            <Parameter Name="quizId" Mode="In" Type="Guid" />
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="englishCenter" Mode="In" Type="String" />
+            <Parameter Name="englishCenterIcon" Mode="In" Type="String" />
+            <Parameter Name="englishCenterDescription" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="bq_Answer">
           <Key>
@@ -884,12 +888,16 @@
           <Property Name="CompanyIcon" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
           <Property Name="NumberOfTesting" Type="Int32" Nullable="false" />
           <Property Name="MaxScore" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Status" Type="Byte" Nullable="false" />
           <NavigationProperty Name="bq_Question" Relationship="tsxxvgkd_BquizModel.FK_bq_Question_bq_Quiz" FromRole="bq_Quiz" ToRole="bq_Question" />
           <NavigationProperty Name="bq_QuestionGroup" Relationship="tsxxvgkd_BquizModel.FK_bq_QuestionGroup_bq_Quiz" FromRole="bq_Quiz" ToRole="bq_QuestionGroup" />
           <NavigationProperty Name="bq_User" Relationship="tsxxvgkd_BquizModel.FK_bq_Quiz_bq_User" FromRole="bq_Quiz" ToRole="bq_User" />
           <NavigationProperty Name="bq_Test" Relationship="tsxxvgkd_BquizModel.FK_bq_Test_bq_Quiz" FromRole="bq_Quiz" ToRole="bq_Test" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EnglishCenter" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EnglishCenterIcon" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EnglishCenterDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="bq_Test">
           <Key>
@@ -1892,6 +1900,10 @@
           <EntitySetMapping Name="bq_Quiz">
             <EntityTypeMapping TypeName="tsxxvgkd_BquizModel.bq_Quiz">
               <MappingFragment StoreEntitySet="bq_Quiz">
+                <ScalarProperty Name="EnglishCenterDescription" ColumnName="EnglishCenterDescription" />
+                <ScalarProperty Name="EnglishCenterIcon" ColumnName="EnglishCenterIcon" />
+                <ScalarProperty Name="EnglishCenter" ColumnName="EnglishCenter" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="QuizId" ColumnName="QuizId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2006,6 +2018,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="qz_QuestionGroup_GetByPartId" FunctionName="tsxxvgkd_BquizModel.Store.qz_QuestionGroup_GetByPartId">
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="qz_Quiz_Create2" FunctionName="tsxxvgkd_BquizModel.Store.qz_Quiz_Create2" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

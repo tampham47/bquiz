@@ -1,0 +1,79 @@
+﻿@model Bquiz.Display.Models.ps_NewQuiz
+@{
+    ViewBag.Title = "Create";
+}
+
+<div style="margin-bottom:15px;">
+    
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+            Create quiz</span>
+    </div>
+</div>
+
+<form class="form-horizontal" role="form" action="/quiz/create" method="post">
+    @Html.ValidationSummary(true, "Quiz creation was unsuccessful. Please correct the errors and try again.")
+
+    <div class="form-group">
+        <label for="userName" class="col-sm-3 control-label">Quiz title</label>
+
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.Quiz.Name, new { type = "text", @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="birthDay" class="col-sm-3 control-label">English centre</label>
+
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.Quiz.EnglishCenter, new { type = "text", @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="birthDay" class="col-sm-3 control-label">English centre cover</label>
+
+        <div class="col-sm-9">
+            <input name="attachments" id="upload_files" type="file" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="gender" class="col-sm-3 control-label">Description</label>
+
+        <div class="col-sm-9">
+            @Html.TextAreaFor(m => m.Quiz.EnglishCenterDescription, new { type = "text", @class = "form-control", rows=5 })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="avatar" class="col-sm-3 control-label">Part 7 difination</label>
+
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.Part7Info, new { type = "text", @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#upload_files").kendoUpload({
+                async: {
+                    saveUrl: "/Upload/Save",
+                    autoUpload: true
+                }
+            });
+        });
+    </script>
+}

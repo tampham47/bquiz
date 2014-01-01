@@ -1040,5 +1040,34 @@ namespace BquizDB.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<bq_QuestionGroup>("qz_QuestionGroup_GetByPartId", mergeOption, quizIdParameter, partIdParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> qz_Quiz_Create2(Nullable<System.Guid> quizId, Nullable<System.Guid> userId, string name, string englishCenter, string englishCenterIcon, string englishCenterDescription)
+        {
+            var quizIdParameter = quizId.HasValue ?
+                new ObjectParameter("quizId", quizId) :
+                new ObjectParameter("quizId", typeof(System.Guid));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var englishCenterParameter = englishCenter != null ?
+                new ObjectParameter("englishCenter", englishCenter) :
+                new ObjectParameter("englishCenter", typeof(string));
+    
+            var englishCenterIconParameter = englishCenterIcon != null ?
+                new ObjectParameter("englishCenterIcon", englishCenterIcon) :
+                new ObjectParameter("englishCenterIcon", typeof(string));
+    
+            var englishCenterDescriptionParameter = englishCenterDescription != null ?
+                new ObjectParameter("englishCenterDescription", englishCenterDescription) :
+                new ObjectParameter("englishCenterDescription", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_Quiz_Create2", quizIdParameter, userIdParameter, nameParameter, englishCenterParameter, englishCenterIconParameter, englishCenterDescriptionParameter);
+        }
     }
 }

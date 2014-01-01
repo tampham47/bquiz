@@ -7,6 +7,7 @@ using System.Web.Security;
 using System.IO;
 
 using Bquiz.Display.Helpers;
+using Bquiz.Display.Models;
 using BquizDB.Entities;
 using BquizDB.Business;
 
@@ -14,6 +15,21 @@ namespace Bquiz.Display.Controllers
 {
     public class QuizController : Controller
     {
+        private bool IsValidPart7(string part7Info)
+        {
+            List<string> data = part7Info.Split(',').ToList();
+            int count = 0;
+            foreach (var item in data)
+            {
+                count += Convert.ToInt32(item);
+            }
+
+            if (count == 28)
+                return true;
+            else
+                return false;
+        }
+
         public ActionResult Publishing(Guid quizId, Guid testId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
@@ -100,6 +116,47 @@ namespace Bquiz.Display.Controllers
             {
                 return Redirect("/quiz");
             }
+        }
+
+        public ActionResult Create()
+        {
+            Session["photos-upload"] = new List<string>();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(ps_NewQuiz model)
+        {
+            //get image upload name
+            List<string> listImage = (List<string>)Session["photos-upload"];
+            var centerIcon = (listImage.Count > 0) ? listImage.First() : null;
+
+            if (centerIcon != null && ModelState.IsValid && IsValidPart7(model.Part7Info))
+            {
+                bl_Quiz blquiz = new bl_Quiz();
+                var id = blquiz.Create2(
+                    ps_Membership.GetUser().UserId,
+                    model.Quiz.Name,
+                    model.Quiz.EnglishCenter,
+                    centerIcon,
+                    model.Quiz.EnglishCenterDescription);
+
+                blquiz.CreateQuiz2(id, model.Part7Info);
+                return Redirect("/");
+            }
+
+            return View(model);
+        }
+
+        public ActionResult Update()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update(bq_Quiz model)
+        {
+            return View();
         }
 
         public ActionResult Result(Guid testId)

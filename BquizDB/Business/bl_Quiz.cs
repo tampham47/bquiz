@@ -6,6 +6,12 @@ using BquizDB.Entities;
 
 namespace BquizDB.Business
 {
+    public class e_QuizStatus
+    {
+        public const int Avaiable = 0;
+        public const int UnAvaiable = 1;
+    }
+
     public class bl_Quiz
     {
         BquizEntities db = new BquizEntities();
@@ -24,6 +30,20 @@ namespace BquizDB.Business
                 quizId,
                 userId,
                 name, financeCompany, companyIcon).Single();
+
+            if (result > 0)
+                return quizId;
+            else
+                return Guid.Empty;
+        }
+        public Guid Create2(Nullable<System.Guid> userId, string name, string englishCenter, string englishCenterIcon, string englishCenterDescription)
+        {
+            var quizId = Guid.NewGuid();
+            var result = db.qz_Quiz_Create2(
+                quizId, userId, name, 
+                englishCenter, 
+                englishCenterIcon, 
+                englishCenterDescription).Single();
 
             if (result > 0)
                 return quizId;
@@ -264,7 +284,7 @@ namespace BquizDB.Business
 
             return 0;
         }
-        private int NewPart7(Guid quizId, byte numberOfGroup, List<byte> itemList)
+        private int NewPart7(Guid quizId, int numberOfGroup, List<int> itemList)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup(db);
             bl_Question bl_question = new bl_Question(db);
@@ -324,7 +344,7 @@ namespace BquizDB.Business
             return 0;
         }
 
-        public int NewQuiz(Guid quizId, byte numberOfGroup, List<byte> itemList)
+        public int NewQuiz(Guid quizId, int numberOfGroup, List<int> itemList)
         {
             int result = 0;
             result += NewPart1(quizId);
@@ -341,12 +361,25 @@ namespace BquizDB.Business
             else
                 return -1;
         }
-        public int CreateQuiz(Guid userId, string name, string financeCompany, string companyIcon, byte numberOfGroup, List<byte> itemList)
+        public int CreateQuiz(Guid userId, string name, string financeCompany, string companyIcon, int numberOfGroup, List<int> itemList)
         {
             var quizId = Create(userId, name, financeCompany, companyIcon);
             NewQuiz(quizId, numberOfGroup, itemList);
 
             return 0;
         }
+        public int CreateQuiz2(Guid quizId, string part7Info)
+        {
+            List<string> data = part7Info.Split(',').ToList();
+            List<int> part7 = new List<int>();
+            foreach (var item in data)
+            {
+                part7.Add(Convert.ToInt32(item));
+            }
+
+            NewQuiz(quizId, part7.Count, part7);
+            return 0;
+        }
     }
 }
+

@@ -32,6 +32,8 @@ namespace Bquiz.Display.Models
     public class ps_NewQuiz
     {
         public bq_Quiz Quiz { get; set; }
+        public string Part7Info { get; set; }
+
         public short NumberOfPart7Group { get; set; }
         public List<short> ItemsForeachP7Group { get; set; }
     }

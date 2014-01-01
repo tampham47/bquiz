@@ -30,6 +30,10 @@ namespace BquizDB.Entities
         public int MaxScore { get; set; }
         public System.DateTime DateCreated { get; set; }
         public byte Status { get; set; }
+        public string Description { get; set; }
+        public string EnglishCenter { get; set; }
+        public string EnglishCenterIcon { get; set; }
+        public string EnglishCenterDescription { get; set; }
     
         public virtual ICollection<bq_Question> bq_Question { get; set; }
         public virtual ICollection<bq_QuestionGroup> bq_QuestionGroup { get; set; }
