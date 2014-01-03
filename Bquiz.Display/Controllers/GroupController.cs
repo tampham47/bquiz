@@ -627,7 +627,6 @@ namespace Bquiz.Display.Controllers
         }
         #endregion
 
-        #region Action
         public ActionResult View(Guid groupId, Guid testId)
         {
             bl_Test bl_test = new bl_Test();
@@ -711,6 +710,17 @@ namespace Bquiz.Display.Controllers
                 return false;
         }
 
-        #endregion
+
+        //update question group
+        public ActionResult Update(Guid groupId, Guid testId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update(ps_Group model)
+        {
+            return View();
+        }
     }
 }

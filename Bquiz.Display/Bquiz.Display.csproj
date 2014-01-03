@@ -1495,6 +1495,7 @@
     <Content Include="Views\Group\_Navigation.cshtml" />
     <Content Include="Views\Quiz\Result.cshtml" />
     <Content Include="Views\Quiz\Create.cshtml" />
+    <Content Include="Views\Quiz\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\libs\sound-manager2\" />

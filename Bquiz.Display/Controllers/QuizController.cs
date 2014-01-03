@@ -142,7 +142,7 @@ namespace Bquiz.Display.Controllers
                     model.Quiz.EnglishCenterDescription);
 
                 blquiz.CreateQuiz2(id, model.Part7Info);
-                return Redirect("/");
+                return Redirect("/quiz/manage");
             }
 
             return View(model);
@@ -157,6 +157,14 @@ namespace Bquiz.Display.Controllers
         public ActionResult Update(bq_Quiz model)
         {
             return View();
+        }
+
+        public ActionResult Manage()
+        {
+            bl_Quiz bl_Quiz = new bl_Quiz();
+            var model = bl_Quiz.GetByUserId(ps_Membership.GetUser().UserId);
+
+            return View(model);
         }
 
         public ActionResult Result(Guid testId)

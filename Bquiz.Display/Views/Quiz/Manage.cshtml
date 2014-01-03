@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BquizDB.Entities.bq_Quiz>
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<div style="font-size:22px; margin-bottom:20px">
+    <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+        Manage Your Quiz</span>
+</div>
+
+<div class="row">
+@foreach (var item in Model)
+{
+    <div class="col-sm-6" style="margin-bottom:4px">
+        <a class="pull-left" href="#">
+            <img class="media-object img-rounded" 
+                src="../../Bquiz_Data/Images/@item.EnglishCenterIcon" width="75"/>
+        </a>
+
+        <div class="media-body" style="padding:4px 0px 0px 4px">
+            <b><a href="/Test/PreStart?quizId=@item.QuizId">@item.Name</a></b><br />
+            <span>Progress: 80%</span><br /> 
+
+            <div style="margin-top:4px">
+                <a href="/quiz/delete?quizId=@item.QuizId" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Delete</a>
+                <a href="/quiz/editting?quizId=@item.QuizId" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    Edit</a>            
+            </div>
+        </div>
+    </div>
+}
+</div>
