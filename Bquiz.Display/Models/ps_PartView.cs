@@ -14,11 +14,16 @@ namespace Bquiz.Display.Models
         public List<bq_QuestionGroup> Groups { get; set; }
     }
 
+    public class ps_EditGroupNavItem
+    {
+        public string PartName = "part1";
+        public List<bq_QuestionGroup> Groups { get; set; }
+    }
+
     public class ps_PartView
     {
         public ps_PartView(Guid quizId)
         {
-
         }
     }
 }

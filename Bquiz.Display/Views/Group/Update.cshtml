@@ -1,0 +1,133 @@
+﻿@model Bquiz.Display.Models.ps_Group
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<style>
+    .breadcrumb>li>.divider {
+        padding:0px;
+    }
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+</style>
+
+<div style="margin-bottom:15px;">
+    
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+            Update collection of question</span>
+    </div>
+</div>
+
+@Html.Action("UpdateNav", new { quizId = Model.QuizId })
+
+<form class="form-horizontal" role="form" action="/quiz/create" method="post">
+    @Html.ValidationSummary(true, "Quiz creation was unsuccessful. Please correct the errors and try again.")
+
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <h4>
+                <label class="label label-success">Group @Model.Group.Name</label></h4>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userName" class="col-sm-3 control-label">Audio</label>
+
+        <div class="col-sm-9">
+            <button class="btn btn-default">select a file</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userName" class="col-sm-3 control-label">Paragraph</label>
+
+        <div class="col-sm-9">
+            @Html.TextAreaFor(m => m.Group.Paragraph, new { rows = "6", @class = "form-control" })
+        </div>
+    </div>
+
+    @foreach(var item in Model.QuestionList)
+    {
+        <div class="form-group" style="border-top:dashed; border-top-color:gray; border-top-width:1px">
+            <div class="col-sm-9 col-sm-offset-3">
+                <h4>
+                    <label class="label label-success">Question @item.Order</label></h4>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Audio</label>
+
+            <div class="col-sm-9">
+                <button class="btn btn-default">select a mp3</button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Image</label>
+
+            <div class="col-sm-9">
+                <button class="btn btn-default">select a image</button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Question</label>
+
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => item.Paragraph, new { rows = "2", @class = "form-control" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Option A</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => item.OptionA, new { type = "text", @class = "form-control" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Option B</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => item.OptionB, new { type = "text", @class = "form-control" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Option C</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => item.OptionC, new { type = "text", @class = "form-control" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Option D</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => item.OptionD, new { type = "text", @class = "form-control" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label">Answer</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => item.Answer, new { type = "number", @class = "form-control" })
+
+                <span>A=1, B=2, C=3, D=4</span>
+            </div>
+            
+        </div>
+    }
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="pull-right">
+                <a href="@Url.Action("index", "quiz")" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

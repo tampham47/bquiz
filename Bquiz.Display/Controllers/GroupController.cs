@@ -674,12 +674,6 @@ namespace Bquiz.Display.Controllers
             return View(group);
         }
 
-        /// <summary>
-        /// This is navigation menu
-        /// </summary>
-        /// <param name="quizId"></param>
-        /// <param name="testId"></param>
-        /// <returns></returns>
         public ActionResult Navigation(Guid quizId, Guid testId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
@@ -712,15 +706,41 @@ namespace Bquiz.Display.Controllers
 
 
         //update question group
-        public ActionResult Update(Guid groupId, Guid testId)
+        public ActionResult Update(Guid groupId)
         {
-            return View();
+            bl_QuestionGroup bl_group = new bl_QuestionGroup();
+            bl_Question bl_question = new bl_Question();
+            ps_Group model = new ps_Group();
+
+            model.GroupId = groupId;
+            model.Group = bl_group.GetById(groupId);
+            model.QuizId = model.Group.QuizId;
+            model.QuestionList = bl_question.GetByGroupId(groupId);
+
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Update(ps_Group model)
         {
             return View();
+        }
+
+        public ActionResult UpdateNav(Guid quizId)
+        {
+            bl_QuestionGroup bl_group = new bl_QuestionGroup();
+            List<ps_EditGroupNavItem> model = new List<ps_EditGroupNavItem>();
+
+            for (byte i = 1; i <= 8; i++)
+            {
+                model.Add(new ps_EditGroupNavItem
+                {
+                    PartName = String.Format("Part{0}", i),
+                    Groups = bl_group.GetByPartId(quizId, i)
+                });
+            }
+
+            return View(model);
         }
     }
 }

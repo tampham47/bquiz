@@ -17,6 +17,7 @@ namespace Bquiz.Display.Models
     {
         public Guid QuizId { get; set; }
         public Guid TestId { get; set; }
+        public Guid GroupId { get; set; }
 
         public bq_QuestionGroup Group { get; set; }
         public List<bq_Question> QuestionList { get; set; }

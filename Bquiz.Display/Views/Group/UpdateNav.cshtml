@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Bquiz.Display.Models.ps_EditGroupNavItem>
+@{
+    Layout = null;
+}
+
+<div class="col-sm-9 col-sm-offset-3" style="margin-bottom:10px">
+@foreach (var group in Model)
+{
+    <div class="btn-group">
+        <button class="btn-bquiz btn btn-link" data-toggle="dropdown">
+            @group.PartName</button>
+
+        <ul class="dropdown-menu" role="menu">
+            @foreach(var item in group.Groups)
+            {
+            <li>
+                <a href="@Url.Action("update", "group", 
+                    new { groupId=item.QuestionGroupId })">
+
+                    @item.Name
+                    <span class="label label-success pull-right">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </span>
+                </a></li>
+            }
+        </ul>
+    </div>
+}
+</div>
