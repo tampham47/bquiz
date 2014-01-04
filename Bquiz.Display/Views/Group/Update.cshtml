@@ -22,7 +22,7 @@
     </div>
 </div>
 
-@Html.Action("UpdateNav", new { quizId = Model.QuizId })
+@Html.Action("Nav_UpdateGroup", new { quizId = Model.QuizId })
 
 <form class="form-horizontal" role="form" action="/quiz/create" method="post">
     @Html.ValidationSummary(true, "Quiz creation was unsuccessful. Please correct the errors and try again.")
@@ -125,8 +125,14 @@
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
             <div class="pull-right">
-                <a href="@Url.Action("index", "quiz")" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="@Url.Action("manage", "quiz")" class="btn btn-default">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-success">
+                    Submit
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
             </div>
         </div>
     </div>

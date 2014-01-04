@@ -148,15 +148,37 @@ namespace Bquiz.Display.Controllers
             return View(model);
         }
 
-        public ActionResult Update()
+        public ActionResult Update(Guid quizId)
         {
-            return View();
+            Session["photos-upload"] = new List<string>();
+
+            bl_Quiz bl_quiz = new bl_Quiz();
+            var model = bl_quiz.GetById(quizId);
+
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Update(bq_Quiz model)
         {
-            return View();
+            //get image upload name
+            List<string> listImage = (List<string>)Session["photos-upload"];
+            var centerIcon = (listImage.Count > 0) ? listImage.First() : model.EnglishCenterIcon;
+
+            if (centerIcon != null && ModelState.IsValid)
+            {
+                bl_Quiz blquiz = new bl_Quiz();
+                var id = blquiz.Update2(
+                    model.QuizId,
+                    model.Name,
+                    model.EnglishCenter,
+                    centerIcon,
+                    model.EnglishCenterDescription);
+
+                return Redirect("/quiz/manage");
+            }
+
+            return View(model);
         }
 
         public ActionResult Manage()

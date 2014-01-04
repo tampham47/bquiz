@@ -460,6 +460,13 @@
           <Parameter Name="financeCompany" Type="nvarchar" Mode="In" />
           <Parameter Name="companyIcon" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="qz_Quiz_Update2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="quizId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="englishCenter" Type="nvarchar" Mode="In" />
+          <Parameter Name="englishCenterIcon" Type="varchar" Mode="In" />
+          <Parameter Name="englishCenterDescription" Type="ntext" Mode="In" />
+        </Function>
         <Function Name="qz_Quiz_UpdateCompanyIcon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="quizId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="companyIcon" Type="varchar" Mode="In" />
@@ -807,6 +814,13 @@
           <FunctionImport Name="qz_Quiz_Create2" ReturnType="Collection(Int32)">
             <Parameter Name="quizId" Mode="In" Type="Guid" />
             <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="englishCenter" Mode="In" Type="String" />
+            <Parameter Name="englishCenterIcon" Mode="In" Type="String" />
+            <Parameter Name="englishCenterDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="qz_Quiz_Update2" ReturnType="Collection(Int32)">
+            <Parameter Name="quizId" Mode="In" Type="Guid" />
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="englishCenter" Mode="In" Type="String" />
             <Parameter Name="englishCenterIcon" Mode="In" Type="String" />
@@ -2019,6 +2033,7 @@
           <FunctionImportMapping FunctionImportName="qz_QuestionGroup_GetByPartId" FunctionName="tsxxvgkd_BquizModel.Store.qz_QuestionGroup_GetByPartId">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="qz_Quiz_Create2" FunctionName="tsxxvgkd_BquizModel.Store.qz_Quiz_Create2" />
+          <FunctionImportMapping FunctionImportName="qz_Quiz_Update2" FunctionName="tsxxvgkd_BquizModel.Store.qz_Quiz_Update2" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

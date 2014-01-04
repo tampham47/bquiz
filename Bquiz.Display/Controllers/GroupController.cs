@@ -719,32 +719,26 @@ namespace Bquiz.Display.Controllers
 
 
         //update question group
-        public ActionResult Update(Guid? quizId, Guid? groupId)
+        public ActionResult UpdateNav(Guid quizId)
+        {
+            bl_QuestionGroup bl_group = new bl_QuestionGroup();
+            var groupId = bl_group.GetByPartId(quizId, 1)
+                    .OrderBy(m => m.Order)
+                    .First().QuestionGroupId;
+
+            return RedirectToAction("update", new { groupId = groupId });
+        }
+
+        public ActionResult Update(Guid groupId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
             bl_Question bl_question = new bl_Question();
             ps_Group model = new ps_Group();
-            Guid m_groupId = Guid.Empty;
 
-            //do nothing when invalid input
-            if (quizId == null && groupId == null)
-                return Redirect("/");
-
-            if (quizId != null)
-            {
-                m_groupId = bl_group.GetByPartId(quizId.Value, 1)
-                    .OrderBy(m => m.Order)
-                    .First().QuestionGroupId;
-            }
-            if (groupId != null)
-            {
-                m_groupId = groupId.Value;
-            }
-
-            model.GroupId = m_groupId;
-            model.Group = bl_group.GetById(m_groupId);
+            model.GroupId = groupId;
+            model.Group = bl_group.GetById(groupId);
             model.QuizId = model.Group.QuizId;
-            model.QuestionList = bl_question.GetByGroupId(m_groupId);
+            model.QuestionList = bl_question.GetByGroupId(groupId);
 
             return View(model);
         }
@@ -755,7 +749,7 @@ namespace Bquiz.Display.Controllers
             return View();
         }
 
-        public ActionResult UpdateNav(Guid quizId)
+        public ActionResult Nav_UpdateGroup(Guid quizId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
             List<ps_EditGroupNavItem> model = new List<ps_EditGroupNavItem>();

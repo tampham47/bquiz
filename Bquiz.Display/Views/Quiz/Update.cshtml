@@ -1,24 +1,25 @@
-﻿@model Bquiz.Display.Models.ps_NewQuiz
+﻿@model BquizDB.Entities.bq_Quiz
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Update";
 }
 
 <div style="margin-bottom:15px;">
     
     <div style="font-size:22px; margin-bottom:20px">
         <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
-            Create quiz</span>
+            Update quiz</span>
     </div>
 </div>
 
-<form class="form-horizontal" role="form" action="/quiz/create" method="post">
+<form class="form-horizontal" role="form" action="/quiz/update" method="post">
     @Html.ValidationSummary(true, "Quiz creation was unsuccessful. Please correct the errors and try again.")
 
     <div class="form-group">
         <label for="userName" class="col-sm-3 control-label">Quiz title</label>
 
         <div class="col-sm-9">
-            @Html.TextBoxFor(m => m.Quiz.Name, new { type = "text", @class = "form-control" })
+            @Html.TextBoxFor(m => m.Name, new { type = "text", @class = "form-control" })
         </div>
     </div>
     
@@ -26,7 +27,7 @@
         <label for="birthDay" class="col-sm-3 control-label">English centre</label>
 
         <div class="col-sm-9">
-            @Html.TextBoxFor(m => m.Quiz.EnglishCenter, new { type = "text", @class = "form-control" })
+            @Html.TextBoxFor(m => m.EnglishCenter, new { type = "text", @class = "form-control" })
         </div>
     </div>
 
@@ -42,27 +43,24 @@
         <label for="gender" class="col-sm-3 control-label">Description</label>
 
         <div class="col-sm-9">
-            @Html.TextAreaFor(m => m.Quiz.EnglishCenterDescription, new { type = "text", @class = "form-control", rows=5 })
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label for="avatar" class="col-sm-3 control-label">Definition part 7</label>
-
-        <div class="col-sm-9">
-            @Html.TextBoxFor(m => m.Part7Info, new { type = "text", @class = "form-control" })
+            @Html.TextAreaFor(m => m.EnglishCenterDescription, new { @class = "form-control", rows = "8" })
         </div>
     </div>
     
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
             <div class="pull-right">
-                <a href="@Url.Action("index", "quiz")" class="btn btn-default">
+                @Html.HiddenFor(m => m.EnglishCenterIcon)
+                @Html.HiddenFor(m => m.QuizId)
+                
+                <a href="@Url.Action("manage", "quiz")" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
-                    Cancel
-                </a>
+                    Delete</a>
+                <a href="@Url.Action("manage", "quiz")" class="btn btn-default">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Cancel</a>
                 <button type="submit" class="btn btn-success">
-                    Submit
+                    Update
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </button>
             </div>

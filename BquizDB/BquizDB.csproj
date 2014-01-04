@@ -228,6 +228,7 @@
     </Compile>
     <Compile Include="Entities\Custom\bq_Answer.cs" />
     <Compile Include="Entities\Custom\bq_Question.cs" />
+    <Compile Include="Entities\Custom\bq_Quiz.cs" />
     <Compile Include="Entities\da_ZingUser.cs" />
     <Compile Include="Entities\qz_Answer_GetByGroupId_Result.cs">
       <DependentUpon>Bquiz.tt</DependentUpon>

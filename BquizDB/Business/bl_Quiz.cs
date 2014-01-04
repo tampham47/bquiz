@@ -8,8 +8,9 @@ namespace BquizDB.Business
 {
     public class e_QuizStatus
     {
-        public const int Avaiable = 0;
-        public const int UnAvaiable = 1;
+        public const int Approval = 0;
+        public const int Pending = 1;
+        public const int Deleted = 2;
     }
 
     public class bl_Quiz
@@ -61,6 +62,15 @@ namespace BquizDB.Business
             var result = (int)db.qz_Quiz_Update(
                 quizId, name,
                 financeCompany, companyIcon).Single();
+
+            return result;
+        }
+        public int Update2(Nullable<System.Guid> quizId, string name, string englishCenter, string englishCenterIcon, string englishCenterDescription)
+        {
+            var result = (int)db.qz_Quiz_Update2(
+                quizId, name, englishCenter, 
+                englishCenterIcon, 
+                englishCenterDescription).Single();
 
             return result;
         }

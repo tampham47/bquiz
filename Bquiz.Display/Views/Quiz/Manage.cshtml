@@ -24,15 +24,15 @@
 
         <div class="media-body" style="padding:4px 0px 0px 4px">
             <b><a href="/Test/PreStart?quizId=@item.QuizId">@item.Name</a></b><br />
-            <span>Progress: 80%</span><br /> 
+            <span>Status: @item.StrStatus</span><br /> 
 
             <div style="margin-top:4px">
-                <a href="/quiz/delete?quizId=@item.QuizId" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Delete</a>
-                <a href="@Url.Action("update", "group", new { quizId = @item.QuizId })" class="btn btn-success btn-sm">
+                <a href="@Url.Action("update", "quiz", new { quizId = @item.QuizId })" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                    Update</a>
+                <a href="@Url.Action("UpdateNav", "Group", new { quizId = @item.QuizId })" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-chevron-right"></span>
-                    Edit</a>            
+                    Edit Question</a>            
             </div>
         </div>
     </div>

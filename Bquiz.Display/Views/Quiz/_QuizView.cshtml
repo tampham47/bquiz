@@ -10,13 +10,14 @@
         <div class="media-body">
             <b><a href="/Test/PreStart?quizId=@Model.QuizId">@Model.Name</a></b><br />
             <span>@Model.bq_User.UserName</span> 
-            @if(ps_Membership.IsAuthenticated() &&
+
+            @*@if(ps_Membership.IsAuthenticated() &&
                 Model.UserId == ps_Membership.GetUser().UserId)
             {
                 <span>-</span>
                 <a href="/quiz/editting?quizId=@Model.QuizId">(Edit)</a>
                 <a href="/quiz/delete?quizId=@Model.QuizId">(delete)</a>
-            }
+            }*@
             <br />
             <span>@Model.bq_Test.Count người đã tham gia test</span><br />
             <span>Max score : @Model.MaxScore</span>
