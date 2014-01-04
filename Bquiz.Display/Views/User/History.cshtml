@@ -115,8 +115,9 @@
         <div class="media-body" style="padding:4px 0px 0px 4px">
             @if (test.StartTime.AddHours(2)> DateTime.Now)
             {
-                <a href="/group/run?testId=@test.TestId&groupId=@test.bq_Quiz.bq_QuestionGroup.ToList()[0].QuestionGroupId" 
-                    class="btn btn-success pull-right btn-sm">Continue <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                <a href="@Url.Action("runnav", "group", new { testId = test.TestId })"
+                    class="btn btn-success pull-right btn-sm">
+                    Continue <span class="glyphicon glyphicon-chevron-right"></span></a>
             } else
             {
                 <a href="/quiz/result?testId=@test.TestId" 

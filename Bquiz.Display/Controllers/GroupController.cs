@@ -652,6 +652,19 @@ namespace Bquiz.Display.Controllers
             return View(group);
         }
 
+        public ActionResult RunNav(Guid testId)
+        {
+            bl_Test bl_test = new bl_Test();
+            bl_QuestionGroup bl_group = new bl_QuestionGroup();
+
+            Guid quizId = bl_test.GetById(testId).QuizId;
+            Guid groupId = bl_group
+                .GetByPartId(quizId, 1).OrderBy(m => m.Order)
+                .First().QuestionGroupId;
+
+            return RedirectToAction("Run", new { groupId = groupId, testId = testId });
+        }
+
         public ActionResult Run(Guid groupId, Guid testId)
         {
             bl_Test bl_test = new bl_Test();
@@ -706,16 +719,32 @@ namespace Bquiz.Display.Controllers
 
 
         //update question group
-        public ActionResult Update(Guid groupId)
+        public ActionResult Update(Guid? quizId, Guid? groupId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
             bl_Question bl_question = new bl_Question();
             ps_Group model = new ps_Group();
+            Guid m_groupId = Guid.Empty;
 
-            model.GroupId = groupId;
-            model.Group = bl_group.GetById(groupId);
+            //do nothing when invalid input
+            if (quizId == null && groupId == null)
+                return Redirect("/");
+
+            if (quizId != null)
+            {
+                m_groupId = bl_group.GetByPartId(quizId.Value, 1)
+                    .OrderBy(m => m.Order)
+                    .First().QuestionGroupId;
+            }
+            if (groupId != null)
+            {
+                m_groupId = groupId.Value;
+            }
+
+            model.GroupId = m_groupId;
+            model.Group = bl_group.GetById(m_groupId);
             model.QuizId = model.Group.QuizId;
-            model.QuestionList = bl_question.GetByGroupId(groupId);
+            model.QuestionList = bl_question.GetByGroupId(m_groupId);
 
             return View(model);
         }

@@ -761,7 +761,7 @@ img
     background-repeat: repeat-x;
     background-position: bottom;
     background-attachment: fixed;
-    min-height: 700px;
+    min-height: 600px;
 }
 
 .btn-bquiz {

@@ -30,7 +30,7 @@
                 <a href="/quiz/delete?quizId=@item.QuizId" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-remove"></span>
                     Delete</a>
-                <a href="/quiz/editting?quizId=@item.QuizId" class="btn btn-success btn-sm">
+                <a href="@Url.Action("update", "group", new { quizId = @item.QuizId })" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     Edit</a>            
             </div>

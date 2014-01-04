@@ -14,8 +14,7 @@
             @foreach(var item in group.Groups)
             {
             <li>
-                <a href="@Url.Action("update", "group", 
-                    new { groupId=item.QuestionGroupId })">
+                <a href="@Url.Action("update", "group", new { groupId = item.QuestionGroupId })">
 
                     @item.Name
                     <span class="label label-success pull-right">
