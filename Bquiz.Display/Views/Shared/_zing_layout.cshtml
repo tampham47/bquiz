@@ -13,7 +13,7 @@
     <!-- main -->
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
-<body class="BodyBackground">
+<body class="BodyBackground" id="bquiz_container">
     
     @Html.Partial("_HeaderPartial")
 
@@ -39,5 +39,20 @@
     <script src="@Url.Content("~/Content/scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
     <script src="~/Content/libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Content/libs/kendo/js/kendo.web.min.js"></script>
+    <script type="text/javascript" src="http://static.me.zing.vn/v3/js/zm.xcall-1.01.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var h = document.getElementById('bquiz_container').offsetHeight;
+            console.log("ready - h: " + h);
+            h = parseFloat(h);
+            zmXCall.resizeParent({
+                id: "bquiz",
+                height: h
+            });
+
+        });
+    </script>
 </body>
 </html>
