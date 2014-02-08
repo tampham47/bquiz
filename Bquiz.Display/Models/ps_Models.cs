@@ -44,4 +44,11 @@ namespace Bquiz.Display.Models
         public Guid PreGroup { get; set; }
         public Guid NextGroup { get; set; }
     }
+
+    public class ps_Result
+    {
+        public List<bq_Answer> AnswerList { get; set; }
+        public bq_Quiz QuizModel { get; set; }
+        public bq_Test TestModel { get; set; }
+    }
 }

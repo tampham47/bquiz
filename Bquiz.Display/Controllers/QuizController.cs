@@ -191,13 +191,38 @@ namespace Bquiz.Display.Controllers
 
         public ActionResult Result(Guid testId)
         {
+            bl_Test blTest = new bl_Test();
+            bl_Quiz blQuiz = new bl_Quiz();
             bl_Answer blAnswer = new bl_Answer();
-            var data = blAnswer
+            ps_Result model = new ps_Result();
+
+            model.AnswerList = blAnswer
                 .GetByTestId(testId)
                 .OrderBy(m => m.bq_Question.Order)
                 .ToList();
 
-            return View(data);
+            var test = blTest.GetById(testId);
+            var quiz = blQuiz.GetById(test.QuizId);
+
+            model.TestModel = test;
+            model.QuizModel = quiz;
+            return View(model);
+        }
+
+        public ActionResult Approval()
+        {
+            bl_Quiz blQuiz = new bl_Quiz();
+            var quizList = blQuiz.GetByStatus(e_QuizStatus.Pending);
+
+            return View(quizList);
+        }
+
+        public ActionResult Accept(Guid quizId)
+        {
+            bl_Quiz blQuiz = new bl_Quiz();
+            blQuiz.UpdateStatus(quizId, e_QuizStatus.Approval);
+
+            return View();
         }
     }
 }

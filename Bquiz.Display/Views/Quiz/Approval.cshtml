@@ -1,0 +1,33 @@
+﻿@model List<BquizDB.Entities.bq_Quiz>
+
+@{
+    ViewBag.Title = "Approval";
+}
+
+<div style="margin-bottom:15px;">
+    
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+            @ViewBag.Title</span>
+    </div>
+</div>
+
+<div class="row">
+@foreach (var item in Model)
+{
+    <div class="col-sm-6" style="margin-bottom:4px">
+        <a class="pull-left" href="#">
+            <img class="media-object img-rounded" width="75"
+                src="../../Bquiz_Data/Images/@item.EnglishCenterIcon" /></a>
+
+        <div class="media-body" style="padding:4px 0px 0px 4px">
+            <a href="@Url.Action("accept", "quiz", new { quizId = item.QuizId })"
+                class="btn btn-success pull-right btn-sm">
+                Accept <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+            <b>@item.Name</b><br />
+            <span>@item.bq_User.UserName</span>
+        </div>
+    </div>
+}
+</div>

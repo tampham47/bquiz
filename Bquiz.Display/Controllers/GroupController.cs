@@ -687,6 +687,11 @@ namespace Bquiz.Display.Controllers
             return View(group);
         }
 
+        public ActionResult Answer(Guid groupId)
+        {
+            return View();
+        }
+
         public ActionResult Navigation(Guid quizId, Guid testId)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();

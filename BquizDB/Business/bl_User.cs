@@ -40,10 +40,12 @@ namespace BquizDB.Business
                 from get in db.bq_User
                 where get.UserName == userName
                 select get
-                )
-            .Single();
+                ).ToList();
 
-            return result;
+            if (result.Count <= 0)
+                return null;
+            else
+                return result.First();
         }
         public List<bq_User> GetAll()
         {
