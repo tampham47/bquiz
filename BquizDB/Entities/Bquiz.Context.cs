@@ -1094,5 +1094,58 @@ namespace BquizDB.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_Quiz_Update2", quizIdParameter, nameParameter, englishCenterParameter, englishCenterIconParameter, englishCenterDescriptionParameter);
         }
+    
+        public virtual ObjectResult<bq_User> qz_User_GetTop(Nullable<int> top)
+        {
+            var topParameter = top.HasValue ?
+                new ObjectParameter("top", top) :
+                new ObjectParameter("top", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<bq_User>("qz_User_GetTop", topParameter);
+        }
+    
+        public virtual ObjectResult<bq_User> qz_User_GetTop(Nullable<int> top, MergeOption mergeOption)
+        {
+            var topParameter = top.HasValue ?
+                new ObjectParameter("top", top) :
+                new ObjectParameter("top", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<bq_User>("qz_User_GetTop", mergeOption, topParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> qz_User_UpdateBestScore(Nullable<System.Guid> userId, Nullable<int> bestScore)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            var bestScoreParameter = bestScore.HasValue ?
+                new ObjectParameter("bestScore", bestScore) :
+                new ObjectParameter("bestScore", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_User_UpdateBestScore", userIdParameter, bestScoreParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> qz_User_GetRanking(Nullable<int> bestScore)
+        {
+            var bestScoreParameter = bestScore.HasValue ?
+                new ObjectParameter("bestScore", bestScore) :
+                new ObjectParameter("bestScore", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_User_GetRanking", bestScoreParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> qz_Quiz_UpdateMaxScore(Nullable<System.Guid> quizId, Nullable<int> score)
+        {
+            var quizIdParameter = quizId.HasValue ?
+                new ObjectParameter("quizId", quizId) :
+                new ObjectParameter("quizId", typeof(System.Guid));
+    
+            var scoreParameter = score.HasValue ?
+                new ObjectParameter("score", score) :
+                new ObjectParameter("score", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_Quiz_UpdateMaxScore", quizIdParameter, scoreParameter);
+        }
     }
 }

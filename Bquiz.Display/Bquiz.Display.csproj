@@ -1504,6 +1504,7 @@
     <Content Include="Views\Group\Nav_UpdateGroup.cshtml" />
     <Content Include="Views\Quiz\Update.cshtml" />
     <Content Include="Views\Quiz\Approval.cshtml" />
+    <Content Include="Views\Test\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\libs\sound-manager2\" />

@@ -683,7 +683,6 @@ namespace Bquiz.Display.Controllers
             group.Group.Paragraph = HttpUtility.HtmlDecode(group.Group.Paragraph);
             group.QuestionList = bl_question.GetByGroupId(groupId);
             group.AnswerList = bl_answer.GetByGroupId(groupId, testId);
-
             return View(group);
         }
 
@@ -707,6 +706,9 @@ namespace Bquiz.Display.Controllers
                 });
             }
 
+            bl_Answer blAnswer = new bl_Answer();
+            ViewBag.Done = blAnswer.GetNumberOfDone(testId);
+            ViewBag.TestId = testId;
             return View("_Navigation", model);
         }
 
@@ -721,7 +723,6 @@ namespace Bquiz.Display.Controllers
             else
                 return false;
         }
-
 
         //update question group
         public ActionResult UpdateNav(Guid quizId)

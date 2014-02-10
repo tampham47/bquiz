@@ -77,10 +77,16 @@ namespace BquizDB.Business
             var result = db.qz_Answer_GetByTestId(testId).ToList();
             return result;
         }
+        
+        //get all question have an answer
         public List<bq_Answer> GetQuestionDone(Guid testId)
         {
             var result = db.qz_Answer_QuestionDone(testId).ToList();
             return result;
+        }
+        public int GetNumberOfDone(Guid testId)
+        {
+            return GetQuestionDone(testId).Count;
         }
 
         //for test service

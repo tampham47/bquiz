@@ -97,6 +97,13 @@ namespace BquizDB.Business
 
             return result;
         }
+        public int UpdateMaxScore(Guid quizId, int score)
+        {
+            var result = (int)db.qz_Quiz_UpdateMaxScore(
+                quizId, score).Single();
+
+            return result;
+        }
 
         public bq_Quiz GetById(Guid quizId)
         {

@@ -36,9 +36,9 @@ namespace BquizDB.Business
             return result;
         }
 
-        public bq_Test GetById(Guid quizId)
+        public bq_Test GetById(Guid testId)
         {
-            var result = db.qz_Test_GetById(quizId).ToList();
+            var result = db.qz_Test_GetById(testId).ToList();
 
             if (result.Count > 0)
                 return result.First();
@@ -59,11 +59,28 @@ namespace BquizDB.Business
 
             return result;
         }
-        
         public int UpdateMark(Guid testId, int mark)
         {
+            //update mark of a test
+            var test = GetById(testId);
             var result = (int)db.qz_Test_UpdateMark(
                 testId, mark).Single();
+
+            //update max score for a quiz.
+            bl_Quiz blQuiz = new bl_Quiz();
+            var quiz = blQuiz.GetById(test.QuizId);
+            if (quiz.MaxScore < mark)
+            {
+                blQuiz.UpdateMaxScore(quiz.QuizId, mark);
+            }
+
+            //update mark for user
+            bl_User blUser = new bl_User();
+            var user = blUser.GetById(test.UserId);
+            if (user.BestScore < mark)
+            {
+                blUser.UpdateBestScore(test.UserId, mark);
+            }
 
             return result;
         }

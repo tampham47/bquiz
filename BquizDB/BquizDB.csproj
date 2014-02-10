@@ -359,6 +359,9 @@
     <Compile Include="Entities\qz_User_GetById_Result1.cs">
       <DependentUpon>Bquiz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\qz_User_GetTop_Result.cs">
+      <DependentUpon>Bquiz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ZingMe.cs" />
   </ItemGroup>

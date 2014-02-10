@@ -51,6 +51,15 @@ namespace BquizDB.Business
         {
             return db.bq_User.ToList();
         }
+        public List<bq_User> GetTop(int top)
+        {
+            return db.qz_User_GetTop(top).ToList();
+        }
+        public int GetRanking(int bestScore)
+        {
+            var result = (int)db.qz_User_GetRanking(bestScore).Single();
+            return result;
+        }
 
         public int Update(Guid userId, string userName, string email, bool? gender, DateTime? birthday)
         {
@@ -62,8 +71,14 @@ namespace BquizDB.Business
         public int UpdateAvatar(Guid userId, string avatarPath)
         {
             var result = (int)db.qz_User_UpdateAvatar(
-                userId,
-                avatarPath).Single();
+                userId, avatarPath).Single();
+
+            return result;
+        }
+        public int UpdateBestScore(Guid userId, int bestScore)
+        {
+            var result = (int)db.qz_User_UpdateBestScore(
+                userId, bestScore).Single();
 
             return result;
         }

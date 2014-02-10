@@ -10,28 +10,16 @@
 namespace BquizDB.Entities
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class bq_User
+    public partial class qz_User_GetTop_Result
     {
-        public bq_User()
-        {
-            this.bq_Quiz = new HashSet<bq_Quiz>();
-            this.bq_Test = new HashSet<bq_Test>();
-        }
-    
         public System.Guid UserId { get; set; }
+        public int MembershipId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Avatar { get; set; }
         public Nullable<bool> Gender { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
-        public int MembershipId { get; set; }
         public int BestScore { get; set; }
-    
-        public virtual ICollection<bq_Quiz> bq_Quiz { get; set; }
-        public virtual ICollection<bq_Test> bq_Test { get; set; }
-        public virtual bq_User bq_User1 { get; set; }
-        public virtual bq_User bq_User2 { get; set; }
     }
 }

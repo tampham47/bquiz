@@ -77,5 +77,34 @@ namespace Bquiz.Display.Controllers
 
             return View(top10);
         }
+
+        public ActionResult Submit(Guid testId)
+        {
+            bl_Test blTest = new bl_Test();
+            var mark = ps_PageHelpers.GetMark(testId);
+            blTest.UpdateMark(testId, mark);
+
+            return RedirectToAction("result", new { testId = testId });
+        }
+
+        public ActionResult Result(Guid testId)
+        {
+            bl_Test blTest = new bl_Test();
+            bl_Quiz blQuiz = new bl_Quiz();
+            bl_Answer blAnswer = new bl_Answer();
+            ps_Result model = new ps_Result();
+
+            model.AnswerList = blAnswer
+                .GetByTestId(testId)
+                .OrderBy(m => m.bq_Question.Order)
+                .ToList();
+
+            var test = blTest.GetById(testId);
+            var quiz = blQuiz.GetById(test.QuizId);
+
+            model.TestModel = test;
+            model.QuizModel = quiz;
+            return View(model);
+        }
     }
 }

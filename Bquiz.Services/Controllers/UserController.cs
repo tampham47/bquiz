@@ -12,44 +12,28 @@ namespace Bquiz.Display.ServiceControllers
 {
     public class UserController : ApiController
     {
-        public string Get(string userName, string pass)
-        {
-            return string.Format("Connected get {0} {1}", userName, pass);
-        }
-
-        public string Post(string userName, string pass)
-        {
-            return string.Format("Connected post {0} {1}", userName, pass);
-        }
-
         [HttpGet]
-        public bq_User GetAll()
+        public List<bq_User> GetAll()
         {
-            var model = new bq_User();
+            bl_User blUser = new bl_User();
+            var model = blUser.GetAll();
+
             return model;
         }
 
         [HttpGet]
-        public bq_User GetAll2()
+        public bq_User GetById(Guid userId)
         {
-            var model = new bq_User();
+            bl_User blUser = new bl_User();
+            var model = blUser.GetById(userId);
+
             return model;
         }
 
         [HttpGet]
-        public bq_User GetAll2(int a)
+        public bl_User GetTop(int top)
         {
-            var model = new bq_User();
-            model.Email = a.ToString();
-            return model;
-        }
-
-        [HttpGet]
-        public bq_User Filter(string request)
-        {
-            var model = new bq_User();
-            model.Email = request;
-            return model;
+            return new bl_User();
         }
     }
 }

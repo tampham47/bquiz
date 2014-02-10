@@ -120,14 +120,14 @@
                     Continue <span class="glyphicon glyphicon-chevron-right"></span></a>
             } else
             {
-                <a href="/quiz/result?testId=@test.TestId" 
+                <a href="@Url.Action("submit", "test", new { testId = test.TestId })" 
                     class="btn btn-default pull-right btn-sm">Result 
                     <span class="glyphicon glyphicon-chevron-right"></span></a>
             }
 
             <b>@test.bq_Quiz.Name</b><br />
             <span>Test date: @test.StartTime.ToLocalTime()</span><br />
-            <span>Mark: 720</span>   
+            <span>Mark: @test.Mark</span>   
         </div>
     </div>
 }
