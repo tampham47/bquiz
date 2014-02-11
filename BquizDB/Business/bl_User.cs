@@ -57,7 +57,7 @@ namespace BquizDB.Business
         }
         public int GetRanking(int bestScore)
         {
-            var result = (int)db.qz_User_GetRanking(bestScore).Single();
+            var result = (int)db.qz_User_GetRanking(bestScore).Single() + 1;
             return result;
         }
 

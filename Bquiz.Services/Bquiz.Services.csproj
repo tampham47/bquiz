@@ -159,6 +159,7 @@
     <Compile Include="Helpers\ps_Server.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\TopModel.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,7 +173,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\BquizApi.pubxml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
