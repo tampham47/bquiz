@@ -209,6 +209,7 @@ namespace Bquiz.Display.Controllers
             return View(model);
         }
 
+        [Authorize(Users="tampham47")]
         public ActionResult Approval()
         {
             bl_Quiz blQuiz = new bl_Quiz();
@@ -217,6 +218,7 @@ namespace Bquiz.Display.Controllers
             return View(quizList);
         }
 
+        [Authorize(Users = "tampham47")]
         public ActionResult Accept(Guid quizId)
         {
             bl_Quiz blQuiz = new bl_Quiz();

@@ -212,6 +212,7 @@
     <Content Include="Content\images\default-company.jpg" />
     <Content Include="Content\images\default-user.jpg" />
     <Content Include="Content\images\footer3.jpg" />
+    <Content Include="Content\images\get-it-on-google-play.png" />
     <Content Include="Content\images\roundA.png" />
     <Content Include="Content\images\roundB.png" />
     <Content Include="Content\images\roundC.png" />
@@ -1505,6 +1506,8 @@
     <Content Include="Views\Quiz\Update.cshtml" />
     <Content Include="Views\Quiz\Approval.cshtml" />
     <Content Include="Views\Test\Result.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\User\Ranking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\libs\sound-manager2\" />

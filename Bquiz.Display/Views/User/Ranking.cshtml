@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BquizDB.Entities.bq_User>
+
+@{
+    ViewBag.Title = "Ranking";
+}
+
+<div style="margin-bottom:15px;">
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" 
+            style="font-weight:lighter; font-family:tahoma">@ViewBag.Title</span>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4" style="margin-bottom:8px">
+            <div class="media">
+                <a href="#" class="pull-left">
+                    <img src="@item.GetAvatar()" class="img-rounded" width="75" height="75"/>
+                </a>
+
+                <div class="media-body">
+                    <b><a href="#">@item.GetDisplayName()</a></b><br />
+                    <span>Birthday: @item.Birthday.GetValueOrDefault().ToShortDateString()</span><br />
+                    <span>Mark: @item.BestScore</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

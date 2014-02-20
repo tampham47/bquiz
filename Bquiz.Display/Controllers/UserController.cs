@@ -58,5 +58,13 @@ namespace Bquiz.Display.Controllers
 
             return View(model);
         }
+
+        public ActionResult Ranking()
+        {
+            bl_User blUser = new bl_User();
+            var model = blUser.GetTop(12);
+
+            return View(model);
+        }
     }
 }

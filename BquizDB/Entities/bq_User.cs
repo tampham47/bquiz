@@ -28,6 +28,7 @@ namespace BquizDB.Entities
         public Nullable<System.DateTime> Birthday { get; set; }
         public int MembershipId { get; set; }
         public int BestScore { get; set; }
+        public string DisplayName { get; set; }
     
         public virtual ICollection<bq_Quiz> bq_Quiz { get; set; }
         public virtual ICollection<bq_Test> bq_Test { get; set; }

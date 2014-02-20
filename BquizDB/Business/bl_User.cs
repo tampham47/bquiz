@@ -82,5 +82,13 @@ namespace BquizDB.Business
 
             return result;
         }
+        public int HardUpdate(Nullable<System.Guid> userId, string avatar, Nullable<bool> gender, Nullable<System.DateTime> birthday, string displayName)
+        {
+            var result = (int)db.qz_User_HardUpdate(
+                userId, avatar, gender, 
+                birthday, displayName).Single();
+
+            return result;
+        }
     }
 }

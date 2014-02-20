@@ -65,12 +65,28 @@ namespace Bquiz.Display.Controllers
             ZingMe zing = new ZingMe(signed_request);
             bl_User bluser = new bl_User();
             var zingUser = zing.GetInfo();
-            string userName = "zing." + zingUser.UserName;
+            //string userName = "zing." + zingUser.UserName;
+            string userName = zingUser.UserName;
             
             var user = bluser.GetByUserName(userName);
             if (user == null)
             {
-                bluser.Create(Guid.NewGuid(), userName, "", false, DateTime.Now);
+                var userId = Guid.NewGuid();
+                bluser.Create(userId, userName, "", false, DateTime.Now);
+                bluser.HardUpdate(
+                    userId,
+                    zingUser.Avatar160, true,
+                    DateTime.Now,
+                    zingUser.DisplayName);
+            }
+            else
+            {
+                bluser.HardUpdate(
+                    user.UserId,
+                    zingUser.Avatar160, 
+                    user.Gender,
+                    user.Birthday,
+                    zingUser.DisplayName);
             }
 
             OAuthWebSecurity.CreateOrUpdateAccount("zing", zingUser.Id, userName);

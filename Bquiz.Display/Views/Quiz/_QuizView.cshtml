@@ -10,9 +10,9 @@
         <div class="media-body">
             <b><a href="@Url.Action("prestart", "test", new { quizId = Model.QuizId })">
                 @Model.Name</a></b><br />
-            <span>@Model.bq_User.UserName</span><br />
-            <span>@Model.bq_Test.Count người đã tham gia test</span><br />
-            <span>Max score : @Model.MaxScore</span>
+            <span>@Model.bq_User.GetDisplayName()</span><br />
+            <span>Highest score: @Model.MaxScore</span><br />
+            <span>@Model.bq_Test.Count tests</span>
         </div>
     </div>
 

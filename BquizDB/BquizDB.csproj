@@ -49,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -229,6 +230,7 @@
     <Compile Include="Entities\Custom\bq_Answer.cs" />
     <Compile Include="Entities\Custom\bq_Question.cs" />
     <Compile Include="Entities\Custom\bq_Quiz.cs" />
+    <Compile Include="Entities\Custom\bq_User.cs" />
     <Compile Include="Entities\da_ZingUser.cs" />
     <Compile Include="Entities\qz_Answer_GetByGroupId_Result.cs">
       <DependentUpon>Bquiz.tt</DependentUpon>
@@ -363,6 +365,7 @@
       <DependentUpon>Bquiz.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Server.cs" />
     <Compile Include="Utility\ZingMe.cs" />
   </ItemGroup>
   <ItemGroup />

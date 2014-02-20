@@ -144,10 +144,11 @@
           <Property Name="MembershipId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="60" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="256" />
-          <Property Name="Avatar" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="Avatar" Type="varchar" Nullable="false" MaxLength="256" />
           <Property Name="Gender" Type="bit" />
           <Property Name="Birthday" Type="smalldatetime" />
           <Property Name="BestScore" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="60" />
         </EntityType>
         <Association Name="FK_bq_Answer_bq_Question">
           <End Role="bq_Question" Type="tsxxvgkd_BquizModel.Store.bq_Question" Multiplicity="1" />
@@ -520,6 +521,13 @@
         <Function Name="qz_User_GetTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="top" Type="int" Mode="In" />
         </Function>
+        <Function Name="qz_User_HardUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="avatar" Type="varchar" Mode="In" />
+          <Parameter Name="gender" Type="bit" Mode="In" />
+          <Parameter Name="birthday" Type="smalldatetime" Mode="In" />
+          <Parameter Name="displayName" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="qz_User_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="userName" Type="nvarchar" Mode="In" />
@@ -855,6 +863,13 @@
             <Parameter Name="quizId" Mode="In" Type="Guid" />
             <Parameter Name="score" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="qz_User_HardUpdate" ReturnType="Collection(Int32)">
+            <Parameter Name="userId" Mode="In" Type="Guid" />
+            <Parameter Name="avatar" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="Boolean" />
+            <Parameter Name="birthday" Mode="In" Type="DateTime" />
+            <Parameter Name="displayName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="bq_Answer">
           <Key>
@@ -963,7 +978,7 @@
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
-          <Property Name="Avatar" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="Avatar" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="Gender" Type="Boolean" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <NavigationProperty Name="bq_Quiz" Relationship="tsxxvgkd_BquizModel.FK_bq_Quiz_bq_User" FromRole="bq_User" ToRole="bq_Quiz" />
@@ -972,6 +987,7 @@
           <NavigationProperty Name="bq_User2" Relationship="tsxxvgkd_BquizModel.FK_bq_User_bq_User" FromRole="bq_User1" ToRole="bq_User" />
           <Property Type="Int32" Name="MembershipId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="BestScore" Nullable="false" />
+          <Property Type="String" Name="DisplayName" MaxLength="60" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_bq_Answer_bq_Question">
           <End Role="bq_Question" Type="tsxxvgkd_BquizModel.bq_Question" Multiplicity="1" />
@@ -1985,6 +2001,7 @@
           <EntitySetMapping Name="bq_User">
             <EntityTypeMapping TypeName="tsxxvgkd_BquizModel.bq_User">
               <MappingFragment StoreEntitySet="bq_User">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="BestScore" ColumnName="BestScore" />
                 <ScalarProperty Name="MembershipId" ColumnName="MembershipId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2080,6 +2097,7 @@
           <FunctionImportMapping FunctionImportName="qz_User_UpdateBestScore" FunctionName="tsxxvgkd_BquizModel.Store.qz_User_UpdateBestScore" />
           <FunctionImportMapping FunctionImportName="qz_User_GetRanking" FunctionName="tsxxvgkd_BquizModel.Store.qz_User_GetRanking" />
           <FunctionImportMapping FunctionImportName="qz_Quiz_UpdateMaxScore" FunctionName="tsxxvgkd_BquizModel.Store.qz_Quiz_UpdateMaxScore" />
+          <FunctionImportMapping FunctionImportName="qz_User_HardUpdate" FunctionName="tsxxvgkd_BquizModel.Store.qz_User_HardUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -17,10 +17,15 @@ namespace Bquiz.Services.Models
             UserId = user.UserId;
             UserName = user.UserName;
             Email = user.Email;
-            Avatar = ps_Server.AvatarPath + user.Avatar;   
             Gender = user.Gender;
             BirthDay = user.Birthday;
             BestScore = user.BestScore;
+
+            DisplayName = (user.DisplayName != null) ? user.DisplayName : user.UserName;
+            if (user.Avatar.Contains("http"))
+                Avatar = user.Avatar;
+            else
+                Avatar = ps_Server.AvatarPath + user.Avatar;
 
             bl_User blUser = new bl_User();
             Ranking = blUser.GetRanking(BestScore);
@@ -30,6 +35,8 @@ namespace Bquiz.Services.Models
         public Guid UserId { get; set; }
         [DataMember]
         public string UserName { get; set; }
+        [DataMember]
+        public string DisplayName { get; set; }
         [DataMember]
         public string Email { get; set; }
         [DataMember]

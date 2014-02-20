@@ -9,10 +9,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/27/2013 14:48:09</publishTime>
     </File>
     <File Include="bin/Bquiz.Display.dll">
-      <publishTime>02/11/2014 17:04:51</publishTime>
+      <publishTime>02/19/2014 14:18:59</publishTime>
     </File>
     <File Include="bin/BquizDB.dll">
-      <publishTime>02/11/2014 17:04:45</publishTime>
+      <publishTime>02/19/2014 14:10:28</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
       <publishTime>10/27/2013 14:48:05</publishTime>
@@ -93,7 +93,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/27/2013 14:48:05</publishTime>
     </File>
     <File Include="bin/zingme-sdk.dll">
-      <publishTime>11/13/2013 14:34:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/images/ArrowHead-Down.png">
       <publishTime>09/27/2013 14:29:46</publishTime>
@@ -127,6 +127,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/footer3.jpg">
       <publishTime>09/27/2013 14:29:46</publishTime>
+    </File>
+    <File Include="Content/images/get-it-on-google-play.png">
+      <publishTime>02/16/2014 15:49:23</publishTime>
     </File>
     <File Include="Content/images/roundA.png">
       <publishTime>09/27/2013 14:29:46</publishTime>
@@ -3450,7 +3453,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/28/2013 00:59:01</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>01/04/2014 20:56:06</publishTime>
+      <publishTime>02/16/2014 15:56:28</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>09/27/2013 14:29:50</publishTime>
@@ -3717,13 +3720,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2013 19:34:05</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>11/22/2013 20:35:24</publishTime>
+      <publishTime>02/19/2014 00:17:39</publishTime>
     </File>
     <File Include="Views/Account/Manage.cshtml">
       <publishTime>09/11/2013 11:28:42</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>05/10/2013 12:50:46</publishTime>
+      <publishTime>02/19/2014 13:29:16</publishTime>
     </File>
     <File Include="Views/Account/_ChangePasswordPartial.cshtml">
       <publishTime>09/11/2013 18:03:55</publishTime>
@@ -3858,7 +3861,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/04/2014 23:59:11</publishTime>
     </File>
     <File Include="Views/Quiz/_QuizView.cshtml">
-      <publishTime>01/05/2014 01:28:56</publishTime>
+      <publishTime>02/19/2014 13:59:22</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Currency.cshtml">
       <publishTime>09/27/2013 14:26:01</publishTime>
@@ -3887,8 +3890,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Shared/_EdittingLayout.cshtml">
       <publishTime>09/27/2013 14:26:03</publishTime>
     </File>
+    <File Include="Views/Shared/_FooterPartial.cshtml">
+      <publishTime>02/16/2014 15:54:15</publishTime>
+    </File>
     <File Include="Views/Shared/_HeaderPartial.cshtml">
-      <publishTime>02/08/2014 15:54:32</publishTime>
+      <publishTime>02/19/2014 13:42:04</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>12/26/2013 00:08:40</publishTime>
@@ -3915,13 +3921,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2013 14:26:04</publishTime>
     </File>
     <File Include="Views/Shared/_zing_layout.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/16/2014 16:00:50</publishTime>
     </File>
     <File Include="Views/Shared/_zing_pure_layout.cshtml">
-      <publishTime>01/04/2014 09:32:32</publishTime>
+      <publishTime>02/16/2014 16:00:53</publishTime>
     </File>
     <File Include="Views/Shared/_zing_user_layout.cshtml">
-      <publishTime>01/04/2014 09:32:50</publishTime>
+      <publishTime>02/16/2014 16:00:57</publishTime>
     </File>
     <File Include="Views/Test/PreStart.cshtml">
       <publishTime>01/02/2014 19:46:48</publishTime>
@@ -3933,16 +3939,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2013 18:05:35</publishTime>
     </File>
     <File Include="Views/User/EditProfile.cshtml">
-      <publishTime>09/11/2013 18:03:41</publishTime>
+      <publishTime>02/19/2014 00:28:52</publishTime>
     </File>
     <File Include="Views/User/History.cshtml">
-      <publishTime>02/09/2014 21:55:42</publishTime>
+      <publishTime>02/19/2014 13:51:19</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
       <publishTime>09/30/2013 18:00:03</publishTime>
     </File>
     <File Include="Views/User/Myquiz.cshtml">
       <publishTime>09/11/2013 18:08:43</publishTime>
+    </File>
+    <File Include="Views/User/Ranking.cshtml">
+      <publishTime>02/19/2014 14:17:12</publishTime>
     </File>
     <File Include="Views/User/_QuizViewByUser.cshtml">
       <publishTime>09/30/2013 17:59:35</publishTime>
@@ -3957,7 +3966,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/26/2013 23:13:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/11/2014 17:05:13</publishTime>
+      <publishTime>02/19/2014 13:54:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

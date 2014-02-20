@@ -1,11 +1,17 @@
 ﻿@model BquizDB.Entities.bq_User
 
 @{
-    ViewBag.Title = "EditProfile";
-    Layout = "~/Views/Shared/_zing_user_layout.cshtml";
+    ViewBag.Title = "Edit Profile";
+    //Layout = "~/Views/Shared/_zing_user_layout.cshtml";
+    Layout = "~/Views/Shared/_zing_pure_layout.cshtml";
 }
 
-<h2>Edit Proffile</h2>
+<div style="margin-bottom:15px;">    
+    <div style="font-size:22px; margin-bottom:20px">
+        <span class="label label-info" 
+            style="font-weight:lighter; font-family:tahoma">@ViewBag.Title</span>
+    </div>
+</div>
 <p>Use the form below to change your profile.</p>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -72,7 +78,7 @@
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
             <div class="pull-right">
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <a href="@Url.Action("index", "quiz")" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>

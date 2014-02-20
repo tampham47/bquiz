@@ -709,6 +709,13 @@ namespace Bquiz.Display.Controllers
             bl_Answer blAnswer = new bl_Answer();
             ViewBag.Done = blAnswer.GetNumberOfDone(testId);
             ViewBag.TestId = testId;
+
+            //get the rest time
+            bl_Test blTest = new bl_Test();
+            var test = blTest.GetById(testId);
+            double restTime = (test.StartTime.AddHours(2) - DateTime.Now).TotalSeconds;
+            ViewBag.Minute = Math.Round(restTime / 60, 0);
+            ViewBag.Second = Math.Round(restTime % 60, 0);
             return View("_Navigation", model);
         }
 

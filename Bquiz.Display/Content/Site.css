@@ -391,6 +391,7 @@ div#title
     margin-bottom: 40px;
     background: White;
     padding: 2px 0px 10px 0px;
+    /*min-height: 500px;*/
 }
 
 #MainPanel {

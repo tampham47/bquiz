@@ -1147,5 +1147,30 @@ namespace BquizDB.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_Quiz_UpdateMaxScore", quizIdParameter, scoreParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> qz_User_HardUpdate(Nullable<System.Guid> userId, string avatar, Nullable<bool> gender, Nullable<System.DateTime> birthday, string displayName)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(System.Guid));
+    
+            var avatarParameter = avatar != null ?
+                new ObjectParameter("avatar", avatar) :
+                new ObjectParameter("avatar", typeof(string));
+    
+            var genderParameter = gender.HasValue ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(bool));
+    
+            var birthdayParameter = birthday.HasValue ?
+                new ObjectParameter("birthday", birthday) :
+                new ObjectParameter("birthday", typeof(System.DateTime));
+    
+            var displayNameParameter = displayName != null ?
+                new ObjectParameter("displayName", displayName) :
+                new ObjectParameter("displayName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("qz_User_HardUpdate", userIdParameter, avatarParameter, genderParameter, birthdayParameter, displayNameParameter);
+        }
     }
 }

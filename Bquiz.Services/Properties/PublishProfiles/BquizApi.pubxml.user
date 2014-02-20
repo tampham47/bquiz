@@ -12,10 +12,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/23/2013 21:47:13</publishTime>
     </File>
     <File Include="bin/Bquiz.Services.dll">
-      <publishTime>02/11/2014 21:35:21</publishTime>
+      <publishTime>02/16/2014 16:54:34</publishTime>
     </File>
     <File Include="bin/BquizDB.dll">
-      <publishTime>02/11/2014 21:24:23</publishTime>
+      <publishTime>02/16/2014 16:47:43</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>12/23/2013 21:47:09</publishTime>

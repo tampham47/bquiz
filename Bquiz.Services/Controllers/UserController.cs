@@ -52,7 +52,8 @@ namespace Bquiz.Display.ServiceControllers
             bl_User blUser = new bl_User();
             TopModel model = new TopModel();
 
-            var user = blUser.GetByUserName("zing." + userName);
+            //var user = blUser.GetByUserName("zing." + userName);
+            var user = blUser.GetByUserName(userName);
             if (user != null)
                 model.CurrentUser = new UserProfile(user);
             else
