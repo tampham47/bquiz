@@ -1,0 +1,12 @@
+﻿@model BquizDB.Entities.bq_Question
+
+@{
+    ViewBag.Title = "Câu hỏi được chia sẻ";
+}
+
+<div style="font-size:22px; margin-bottom:20px">
+    <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+        @ViewBag.Title</span>
+</div>
+
+@Html.Partial("_QuestionView", Model)

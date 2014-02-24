@@ -686,9 +686,25 @@ namespace Bquiz.Display.Controllers
             return View(group);
         }
 
-        public ActionResult Answer(Guid groupId)
+        public ActionResult Share(Guid id)
         {
-            return View();
+            bl_QuestionGroup bl_group = new bl_QuestionGroup();
+            bl_Question bl_question = new bl_Question();
+            var group = new ps_Group();
+
+            group.Group = bl_group.GetById(id);
+            group.Group.Paragraph = HttpUtility.HtmlDecode(group.Group.Paragraph);
+            group.QuestionList = bl_question.GetByGroupId(id);
+
+            return View(group);
+        }
+
+        public ActionResult Link(Guid questionId)
+        {
+            bl_Question blQuestion = new bl_Question();
+            var model = blQuestion.GetById(questionId);
+
+            return View(model);
         }
 
         public ActionResult Navigation(Guid quizId, Guid testId)
@@ -714,7 +730,7 @@ namespace Bquiz.Display.Controllers
             bl_Test blTest = new bl_Test();
             var test = blTest.GetById(testId);
             double restTime = (test.StartTime.AddHours(2) - DateTime.Now).TotalSeconds;
-            ViewBag.Minute = Math.Round(restTime / 60, 0);
+            ViewBag.Minute = Math.Round(restTime / 60, 0) - 1;
             ViewBag.Second = Math.Round(restTime % 60, 0);
             return View("_Navigation", model);
         }

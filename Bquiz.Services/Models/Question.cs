@@ -15,10 +15,10 @@ namespace Bquiz.Services.Models
         public Question(bq_Question question)
         {
             QuestionId = question.QuestionId;
-            OptionA = question.OptionA;
-            OptionB = question.OptionB;
-            OptionC = question.OptionC;
-            OptionD = question.OptionD;
+            OptionA = (question.OptionA != null) ? question.OptionA : "Answer from audio";
+            OptionB = (question.OptionB != null) ? question.OptionB : "Answer from audio";
+            OptionC = (question.OptionC != null) ? question.OptionC : "Answer from audio";
+            OptionD = (question.OptionD != null) ? question.OptionD : "Answer from audio";
             Answer = question.Answer;
 
             ImagePath = null;

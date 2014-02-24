@@ -18,5 +18,17 @@ namespace BquizDB.Entities
                 default: return "-";
             }
         }
+
+        public String GetAnswerOrDefault(string option)
+        {
+            switch (option)
+            {
+                case "A": return (OptionA != null) ? OptionA : "Answer from audio";
+                case "B": return (OptionB != null) ? OptionB : "Answer from audio";
+                case "C": return (OptionC != null) ? OptionC : "Answer from audio";
+                case "D": return (OptionD != null) ? OptionD : "Answer from audio";
+                default: return "Answer from audio";
+            }
+        }
     }
 }

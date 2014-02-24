@@ -26,22 +26,22 @@
             <tr>
                 <td style="width:20px; vertical-align:top">
                     <span class="label label-info">A</span></td>
-                <td>@Model.OptionA</td>
+                <td>@Model.GetAnswerOrDefault("A")</td>
             </tr>
             <tr>
                 <td style="width:20px; vertical-align:top">
                     <span class="label label-info">B</span></td>
-                <td>@Model.OptionB</td>
+                <td>@Model.GetAnswerOrDefault("B")</td>
             </tr>
             <tr>
                 <td style="width:20px; vertical-align:top">
                     <span class="label label-info">C</span></td>
-                <td>@Model.OptionC</td>
+                <td>@Model.GetAnswerOrDefault("C")</td>
             </tr>
             <tr>
                 <td style="width:20px; vertical-align:top">
                     <span class="label label-info">D</span></td>
-                <td>@Model.OptionD</td>
+                <td>@Model.GetAnswerOrDefault("D")</td>
             </tr>
         </table>
     </div>

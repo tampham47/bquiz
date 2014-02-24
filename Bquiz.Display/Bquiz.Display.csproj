@@ -1508,6 +1508,8 @@
     <Content Include="Views\Test\Result.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\User\Ranking.cshtml" />
+    <Content Include="Views\Group\Share.cshtml" />
+    <Content Include="Views\Group\Link.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\libs\sound-manager2\" />

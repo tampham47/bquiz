@@ -1,0 +1,34 @@
+﻿@model Bquiz.Display.Models.ps_Group
+
+@{
+    ViewBag.Title = "Nhóm câu hỏi được chia sẻ";
+}
+
+<div style="font-size:22px; margin-bottom:20px">
+    <span class="label label-info" style="font-weight:lighter; font-family:tahoma">
+        @ViewBag.Title</span>
+</div>
+
+<div>
+    @if (Model.Group.Paragraph != null)
+    {
+        <p>
+            @Html.Raw(Model.Group.Paragraph)
+        </p>
+    }
+
+    @if (Model.Group.MediaPath != null)
+    {
+        <audio controls="controls">
+            <source src="\Bquiz_Data\Audio\@Model.Group.MediaPath" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    }
+</div>
+
+<div style="padding-bottom:20px">
+    @foreach (var question in Model.QuestionList)
+    {   
+        @Html.Partial("_QuestionView", question)
+    }
+</div>
