@@ -65,7 +65,6 @@ namespace Bquiz.Display.Controllers
             ZingMe zing = new ZingMe(signed_request);
             bl_User bluser = new bl_User();
             var zingUser = zing.GetInfo();
-            //string userName = "zing." + zingUser.UserName;
             string userName = zingUser.UserName;
             
             var user = bluser.GetByUserName(userName);

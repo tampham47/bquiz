@@ -9,10 +9,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/27/2013 14:48:09</publishTime>
     </File>
     <File Include="bin/Bquiz.Display.dll">
-      <publishTime>02/24/2014 12:37:47</publishTime>
+      <publishTime>02/27/2014 10:25:48</publishTime>
     </File>
     <File Include="bin/BquizDB.dll">
-      <publishTime>02/24/2014 12:37:46</publishTime>
+      <publishTime>02/27/2014 10:25:47</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
       <publishTime>10/27/2013 14:48:05</publishTime>
@@ -3708,7 +3708,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2013 13:18:15</publishTime>
     </File>
     <File Include="Views/Account/ChangePassword.cshtml">
-      <publishTime>11/09/2013 11:16:31</publishTime>
+      <publishTime>09/11/2013 11:16:31</publishTime>
     </File>
     <File Include="Views/Account/ChangePasswordSuccess.cshtml">
       <publishTime>09/27/2013 18:56:54</publishTime>
@@ -3723,13 +3723,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/19/2014 00:17:39</publishTime>
     </File>
     <File Include="Views/Account/Manage.cshtml">
-      <publishTime>11/09/2013 11:28:42</publishTime>
+      <publishTime>09/11/2013 11:28:42</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>02/19/2014 13:29:16</publishTime>
     </File>
     <File Include="Views/Account/_ChangePasswordPartial.cshtml">
-      <publishTime>11/09/2013 18:03:55</publishTime>
+      <publishTime>09/11/2013 18:03:55</publishTime>
     </File>
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>09/27/2013 19:34:08</publishTime>
@@ -3771,13 +3771,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2013 14:17:54</publishTime>
     </File>
     <File Include="Views/Group/AnswerBoard.cshtml">
-      <publishTime>11/05/2013 20:27:55</publishTime>
+      <publishTime>05/11/2013 20:27:55</publishTime>
     </File>
     <File Include="Views/Group/Index.cshtml">
       <publishTime>10/12/2013 22:54:17</publishTime>
     </File>
     <File Include="Views/Group/Link.cshtml">
-      <publishTime>02/24/2014 09:33:53</publishTime>
+      <publishTime>02/27/2014 10:22:35</publishTime>
     </File>
     <File Include="Views/Group/Nav_UpdateGroup.cshtml">
       <publishTime>01/04/2014 22:13:41</publishTime>
@@ -3789,7 +3789,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2014 21:33:17</publishTime>
     </File>
     <File Include="Views/Group/Share.cshtml">
-      <publishTime>02/23/2014 20:58:23</publishTime>
+      <publishTime>02/27/2014 10:22:14</publishTime>
     </File>
     <File Include="Views/Group/Update.cshtml">
       <publishTime>01/05/2014 00:36:12</publishTime>
@@ -3942,7 +3942,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2014 21:53:12</publishTime>
     </File>
     <File Include="Views/Test/_ViewTop10.cshtml">
-      <publishTime>11/07/2013 18:05:35</publishTime>
+      <publishTime>07/11/2013 18:05:35</publishTime>
     </File>
     <File Include="Views/User/EditProfile.cshtml">
       <publishTime>02/19/2014 00:28:52</publishTime>
@@ -3954,7 +3954,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/30/2013 18:00:03</publishTime>
     </File>
     <File Include="Views/User/Myquiz.cshtml">
-      <publishTime>11/09/2013 18:08:43</publishTime>
+      <publishTime>09/11/2013 18:08:43</publishTime>
     </File>
     <File Include="Views/User/Ranking.cshtml">
       <publishTime>02/19/2014 14:17:12</publishTime>

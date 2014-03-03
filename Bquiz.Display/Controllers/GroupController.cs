@@ -686,24 +686,34 @@ namespace Bquiz.Display.Controllers
             return View(group);
         }
 
-        public ActionResult Share(Guid id)
+        public ActionResult Share(Guid id, string userName)
         {
             bl_QuestionGroup bl_group = new bl_QuestionGroup();
             bl_Question bl_question = new bl_Question();
+            bl_User blUser = new bl_User();
+
             var group = new ps_Group();
+            var user = blUser.GetByUserName(userName);
 
             group.Group = bl_group.GetById(id);
             group.Group.Paragraph = HttpUtility.HtmlDecode(group.Group.Paragraph);
             group.QuestionList = bl_question.GetByGroupId(id);
 
+            if (user != null)
+                ViewBag.DisplayName = user.DisplayName;
             return View(group);
         }
 
-        public ActionResult Link(Guid questionId)
+        public ActionResult Link(Guid questionId, string userName)
         {
             bl_Question blQuestion = new bl_Question();
+            bl_User blUser = new bl_User();
+
+            var user = blUser.GetByUserName(userName);
             var model = blQuestion.GetById(questionId);
 
+            if (user != null)
+                ViewBag.DisplayName = user.DisplayName;
             return View(model);
         }
 
